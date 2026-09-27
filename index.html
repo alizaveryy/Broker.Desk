@@ -309,6 +309,89 @@ nav.bottom .lg{display:none}
 .swatch{display:block;width:28px;height:28px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 input[name=color]:checked + .swatch{box-shadow:0 0 0 3px var(--ink)}
 input[name=color]:focus-visible + .swatch{outline:2px solid var(--sea);outline-offset:2px}
+.fbar{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:10px 0 12px}
+.fsel{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:600;color:var(--ink-2)}
+.fsel select{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius-sm);padding:9px 8px;font-size:15px;color:var(--ink);font-weight:500}
+.fsel.on select{border-color:var(--sea);background:var(--sea-soft);color:var(--sea);font-weight:600}
+.stagechips{margin-top:8px}
+.chip.sm{padding:5px 11px;font-size:13px}
+.pill.stg{background:var(--surface-2);color:var(--ink);font-weight:500}
+.lcctl{display:inline-flex;gap:12px;margin-left:10px;align-items:center}
+.lcpick{position:relative;cursor:pointer;padding:0}
+.lcpick input{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}
+.lcpick input::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.aicard{background:linear-gradient(135deg,var(--sea-soft),var(--surface));border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin:6px 0 4px}
+.aihead{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:500;font-size:16px;color:var(--sea)}
+.blts{margin:6px 0 2px;padding-left:18px;font-size:14.5px}
+.blts li{margin:3px 0}
+.blts.sm{font-size:13.5px;margin:4px 0 0}
+.logs{display:flex;flex-direction:column;gap:8px}
+.logrow{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:10px 12px}
+.lhead{display:flex;justify-content:space-between;font-size:13.5px}
+.lhead span{color:var(--ink-2)}
+.lraw{margin:4px 0 0;font-size:13.5px;color:var(--ink-2)}
+.lnext{margin-top:6px;font-size:13px;font-weight:600;color:var(--brass)}
+.nstep{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:14.5px}
+.nstep input[type=checkbox]{width:18px;height:18px;accent-color:var(--sea)}
+.nstep input[type=date]{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:5px 6px;font-size:13px}
+.rawnotes{margin:8px 0;font-size:14px}
+.rawnotes summary{cursor:pointer;color:var(--ink-2);font-weight:600;font-size:13.5px}
+.rawnotes p{white-space:pre-wrap;background:var(--bg);border-radius:8px;padding:10px;margin:6px 0 0}
+.ogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.otile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.otile span{font-size:12.5px;color:var(--ink-2);font-weight:600}
+.otile b{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em;line-height:1.15;overflow-wrap:anywhere}
+.otile small{font-size:12px;color:var(--ink-2)}
+.otile.hero{background:var(--ink);border-color:var(--ink)}
+.otile.hero span,.otile.hero small{color:var(--band,#A9C2BE);opacity:.9}
+.otile.hero b{color:var(--bg)}
+.otile.hero2{background:var(--sea-soft);border-color:transparent}
+.otile.hero2 b{color:var(--sea)}
+.otile small .okc,.otile small .bad{font-weight:700}
+.ogrid.money .otile b{font-size:22px}
+.ogrid.masked .otile b{letter-spacing:.08em;color:var(--ink-2)}
+.ogrid.masked .otile.hero b{color:#A9C2BE}
+.eye{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:600;color:var(--ink);font-family:var(--body)}
+.obar{display:grid;grid-template-columns:128px 1fr 32px;gap:10px;align-items:center;padding:6px 0;font-size:14px}
+.obar i{height:8px;background:var(--surface-2);border-radius:8px;overflow:hidden;display:block}
+.obar em{display:block;height:100%;background:var(--sea);border-radius:8px}
+.obar b{text-align:right;font-variant-numeric:tabular-nums}
+.score{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.score th,.score td{padding:9px 6px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.score thead th{font-size:11.5px;color:var(--ink-2);font-weight:600;padding-top:2px}
+.score tbody th{text-align:left;font-weight:600;font-size:14px}
+.score td{font-family:var(--display);font-weight:700;font-size:19px}
+.score tr:last-child th,.score tr:last-child td{border-bottom:0}
+.score td:nth-child(3){background:var(--sea-soft);color:var(--sea)}
+.score i{font-style:normal;font-size:10px;margin-left:3px;vertical-align:3px}
+.score .sml{display:none}
+@media (max-width:520px){ .score .lgl{display:none} .score .sml{display:inline} .score td{font-size:17px;padding:9px 4px} .score tbody th{font-size:13px;white-space:normal;padding-right:2px} .score i{margin-left:1px} }
+.score i.up{color:#2E7D4F}.score i.dn{color:var(--coral)}
+.trend{display:flex;align-items:flex-end;gap:10px;height:130px;padding-top:4px}
+.trend div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:3px}
+.trend b{font-size:12.5px}
+.trend i{display:flex;align-items:flex-end;width:100%;max-width:44px;background:var(--sea-soft);border-radius:6px 6px 0 0;min-height:3px;overflow:hidden}
+.trend em{display:block;width:100%;background:var(--sea)}
+.trend span{font-size:11.5px;color:var(--ink-2)}
+.lg1,.lg2{display:inline-block;width:9px;height:9px;border-radius:2px;margin:0 4px 0 8px;vertical-align:-1px}
+.lg1{background:var(--sea-soft);border:1px solid var(--line)}.lg2{background:var(--sea)}
+.sbar{display:grid;grid-template-columns:78px 1fr 30px;gap:8px;align-items:center;padding:5px 0;font-size:14px}
+.sbar>span{font-weight:600}
+.segs2{display:flex;height:22px;border-radius:6px;overflow:hidden;min-width:4px}
+.segs2 button{border:0;padding:0;min-width:16px;font-size:11px;font-weight:700;color:#fff;cursor:pointer;text-shadow:0 0 2px rgba(0,0,0,.35)}
+.segs2 button:hover{filter:brightness(1.1)}
+.sbar b{text-align:right}
+.slegend{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px;font-size:11.5px;color:var(--ink-2)}
+.slegend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.mstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:10px;overflow:hidden;margin-top:6px}
+.mstrip div{background:var(--ink);color:var(--bg);padding:10px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.mstrip span{font-size:11.5px;opacity:.75}
+.mstrip b{font-family:var(--display);font-weight:700;font-size:17px;overflow-wrap:anywhere}
+.mstrip.masked b{letter-spacing:.1em;opacity:.7}
+.mstrip.plain div{background:var(--surface-2);color:var(--ink)}
+.cols.ov .calc-card{margin-bottom:10px}
+.daycols{display:grid;grid-template-columns:1fr;gap:0 14px}
+@media (min-width:1000px){ .daycols{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start} .daycols .row .r{max-width:40%} }
 .editing{font-size:13.5px;color:var(--ink-2);margin:-4px 4px 12px}
 .editing b{color:var(--ink)}
 @media (min-width:1000px){ .cols.calc{grid-template-columns:minmax(0,1fr) minmax(320px,.9fr)} .cols.calc .col-side{position:sticky;top:0} }
@@ -390,6 +473,7 @@ const I = {
   calc:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4.5" y="2.5" width="15" height="19" rx="3"/><rect x="7.5" y="5.5" width="9" height="4" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01" stroke-width="2.4"/></svg>',
   projects:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
   market:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><path d="M4 16l5-5 4 3 7-8"/><path d="M15 6h5v5"/></svg>',
+  overview:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg>',
   money:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"/><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"/></svg>',
   plus:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
   check:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
@@ -405,9 +489,50 @@ const I = {
 
 /* ---------- constants ---------- */
 const TASK_TYPES = ['Call','Meeting','Viewing','Follow-up','Task'];
-const CLIENT_STATUS = ['New','Warm','Hot','Client','Cold'];
+const CLIENT_STATUS = ['New','Cold','Warm','Hot','Client'];
 const STATUS_LABEL = {New:'New lead',Warm:'Warm',Hot:'Hot',Client:'Client',Cold:'Cold'};
-const SOURCES = ['Referral','Property Finder','Bayut','Dubizzle','Social media','Walk-in','Cold call','Developer event','Other'];
+// Lead sources: top level > sub-category > sub-sub-category
+const SOURCE_TREE = [
+  {n:'Referral'},
+  {n:'Product Campaign', c:[{n:'Other'},{n:'Damac Riverside'},{n:'Damac Islands'},{n:'Mr. C'},{n:'Beyond Sensia / Mural'},{n:'Sobha Siniya'},{n:'DarGlobal Trump'},{n:'Rove Commercial'},{n:'Sobha Sanctuary'},{n:'Damac Summer Offers'},{n:'Commercial O1NE'}]},
+  {n:'Roadshow', c:[
+    {n:'NY / NJ', c:[{n:'NY / NJ Feb 2025'},{n:'NY / NJ Mar 2025'},{n:'NY / NJ May 2026'},{n:'NY / NJ Sept 2026'}]},
+    {n:'LA / OC', c:[{n:'LA / OC Oct 2025'},{n:'LA / OC Feb 2026'}]},
+    {n:'Washington DC'},{n:'Telesales'}]},
+  {n:'Family'},
+  {n:'Property Finder / Bayut'},
+  {n:'Other'}
+];
+const SOURCES = SOURCE_TREE.map(x=>x.n);
+const srcKids = (a, b) => { const t = SOURCE_TREE.find(x=>x.n===a); if(!t) return []; if(b==null) return (t.c||[]).map(x=>x.n); const u = (t.c||[]).find(x=>x.n===b); return u ? (u.c||[]).map(x=>x.n) : []; };
+function sourcePath(c){ const parts = [c.source, c.sourceSub, c.sourceSub2].filter(Boolean); if(parts.length===3 && parts[2].startsWith(parts[1])) parts.splice(1,1); return parts.join(' › '); }
+// Map older or free-text values (e.g. from Excel) onto the tree
+function matchSource(str){
+  const t = String(str||'').trim(); if(!t) return {};
+  const lo = t.toLowerCase();
+  for(const a of SOURCE_TREE){ for(const b of (a.c||[])){ for(const c2 of (b.c||[])) if(c2.n.toLowerCase()===lo) return {source:a.n, sourceSub:b.n, sourceSub2:c2.n}; } }
+  for(const a of SOURCE_TREE){ for(const b of (a.c||[])) if(b.n.toLowerCase()===lo && b.n!=='Other') return {source:a.n, sourceSub:b.n}; }
+  for(const a of SOURCE_TREE) if(a.n.toLowerCase()===lo) return {source:a.n};
+  if(/property ?finder|bayut|\bpf\b/i.test(t)) return {source:'Property Finder / Bayut'};
+  if(/washington|\bdc\b/i.test(t)) return {source:'Roadshow', sourceSub:'Washington DC'};
+  if(/roadshow/i.test(t)) return {source:'Roadshow'};
+  if(/telesales/i.test(t)) return {source:'Roadshow', sourceSub:'Telesales'};
+  const norm = x => x.toLowerCase().replace(/[^a-z0-9]/g,'');
+  const nt = norm(t);
+  for(const a of SOURCE_TREE){ for(const b of (a.c||[])){ for(const c2 of (b.c||[])) if(nt.includes(norm(c2.n))) return {source:a.n, sourceSub:b.n, sourceSub2:c2.n}; } }
+  for(const a of SOURCE_TREE){ for(const b of (a.c||[])) if(b.n!=='Other' && norm(b.n).length>=4 && nt.includes(norm(b.n))) return {source:a.n, sourceSub:b.n}; }
+  if(/campaign/i.test(t)) return {source:'Product Campaign', sourceSub:'Other'};
+  if(/referr/i.test(t)) return {source:'Referral'};
+  if(/family/i.test(t)) return {source:'Family'};
+  return {source:'Other'};
+}
+function sourceFields(c){
+  const s1 = c.source||'', k1 = srcKids(s1), k2 = s1&&c.sourceSub ? srcKids(s1, c.sourceSub) : [];
+  const legacy = s1 && !SOURCES.includes(s1) ? `<option value="${esc(s1)}" selected>${esc(s1)} (old)</option>` : '';
+  return `<div class="field"><label for="cso">Source</label><select id="cso" name="source" data-src="1"><option value=""></option>${opt(SOURCES,s1)}${legacy}</select></div>
+    ${k1.length?`<div class="field"><label for="cso2">${s1==='Roadshow'?'Roadshow':s1==='Product Campaign'?'Campaign':'Detail'}</label><select id="cso2" name="sourceSub" data-src="2"><option value=""></option>${opt(k1,c.sourceSub)}</select></div>`:''}
+    ${k2.length?`<div class="field"><label for="cso3">Event</label><select id="cso3" name="sourceSub2" data-src="3"><option value=""></option>${opt(k2,c.sourceSub2)}</select></div>`:''}`;
+}
 const STAGES = [
   {id:'negotiating',label:'Negotiating'},
   {id:'reserved',label:'Reserved / EOI'},
@@ -417,17 +542,17 @@ const STAGES = [
 ];
 const STAGE_IDX = Object.fromEntries(STAGES.map((s,i)=>[s.id,i]));
 const stageLabel = id => id==='lost' ? 'Lost' : (STAGES.find(s=>s.id===id)||{}).label || id;
-const KINDS = ['clients','tasks','deals','calcs','projects','maps'];
+const KINDS = ['clients','tasks','deals','calcs','projects','maps','notes'];
 const LS_KEY = 'broker-desk-v1';
 
 /* ---------- state ---------- */
-const state = {clients:{},tasks:{},deals:{},calcs:{},projects:{},maps:{}};
+const state = {clients:{},tasks:{},deals:{},calcs:{},projects:{},maps:{},notes:{}};
 let unsynced = []; // [kind,id,deleted]
 let ui = {tab:'today', clientFilter:'all', clientQuery:'', dealFilter:'open', showLater:false, year:new Date().getFullYear()};
 let dbRoot = null, syncMode = 'local', downloads = null;
 // Phone app = the same file served from GitHub Pages (no claude.ai runtime around it)
 const IS_PHONE = !(window.claude && typeof window.claude.use === 'function');
-const SYNC_KINDS = ['clients','tasks','deals','calcs'];
+const SYNC_KINDS = ['clients','tasks','deals','calcs','notes','projects'];
 let tomb = {}, lastSync = null;
 try{ const t = JSON.parse(localStorage.getItem(LS_KEY+'-tomb')||'null'); if(t){ tomb = t.tomb||{}; lastSync = t.lastSync||null; } }catch(e){}
 function saveTomb(){
@@ -476,6 +601,8 @@ function persist(kind, id, deleted){
   }
 }
 function save(kind, obj){
+  if(kind==='clients'){ const conv = obj.stage==='Converted' || obj.status==='Client'; if(conv && !obj.convertedAt) obj.convertedAt = today(); if(!conv && obj.convertedAt) obj.convertedAt = null; }
+  if(kind==='deals' && ['spa','closed','received'].includes(obj.stage) && !obj.closedAt) obj.closedAt = today();
   obj.updatedAt = Date.now();
   if(!obj.createdAt) obj.createdAt = Date.now();
   state[kind][obj.id] = obj;
@@ -528,16 +655,16 @@ function render(){
   // don't redraw the calculator under someone's fingers while they type
   if((ui.tab==='calc'||ui.tab==='projects') && document.activeElement && document.activeElement.dataset && (document.activeElement.dataset.cin!==undefined || document.activeElement.dataset.pin!==undefined || document.activeElement.dataset.prj!==undefined)){ if(ui.sheetRefresh) ui.sheetRefresh(); return; }
   const scroll = $main.scrollTop;
-  $main.innerHTML = ({today:viewToday, clients:viewClients, deals:viewDeals, money:viewMoney, calc:viewCalc, projects:IS_PHONE?viewToday:viewProjects, market:IS_PHONE?viewToday:viewMarket})[ui.tab]();
+  $main.innerHTML = ({overview:viewOverview, today:viewToday, clients:viewClients, deals:viewDeals, money:viewMoney, calc:viewCalc, projects:viewProjects, market:IS_PHONE?viewToday:viewMarket})[ui.tab]();
   $main.scrollTop = scroll;
   if(ui.sheetRefresh) ui.sheetRefresh();
 }
 function renderNav(){
-  document.body.classList.toggle('on-calc', ui.tab==='calc' || ui.tab==='market');
+  document.body.classList.toggle('on-calc', ui.tab==='calc' || ui.tab==='market' || ui.tab==='overview');
   const tab = (id,label) => `<button class="tab ${ui.tab===id?'on':''}" data-act="tab" data-v="${id}" aria-current="${ui.tab===id?'page':'false'}">${I[id]}${id==='calc'?'<span class="lg">Calculators</span><span class="sm">Calcs</span>':label}</button>`;
   const navEl = document.getElementById('nav');
-  navEl.innerHTML = tab('today','Today')+tab('clients','Clients')+`<button class="fab" data-act="quick" aria-label="Add new">${I.plus}<span class="fablbl">New</span></button>`+tab('deals','Deals')+tab('money','Earnings')+(IS_PHONE?'':tab('projects','Projects')+tab('market','Market'))+tab('calc','Calculators');
-  navEl.style.setProperty('--tabs', IS_PHONE?5:7);
+  navEl.innerHTML = tab('overview','Overview')+tab('today','Today')+tab('clients','Clients')+`<button class="fab" data-act="quick" aria-label="Add new">${I.plus}<span class="fablbl">New</span></button>`+tab('deals','Deals')+tab('money','Earnings')+tab('projects','Projects')+(IS_PHONE?'':tab('market','Market'))+tab('calc','Calculators');
+  navEl.style.setProperty('--tabs', IS_PHONE?7:8);
 }
 
 function taskRow(t, showDate){
@@ -561,9 +688,10 @@ function viewToday(){
   const overdue = open.filter(t=>t.date && t.date<t0);
   const todays = open.filter(t=>t.date===t0);
   const doneToday = Object.values(state.tasks).filter(t=>t.done && t.doneOn===t0);
-  const week = open.filter(t=>t.date>t0 && t.date<=addDays(t0,7));
+  const t1 = addDays(t0,1);
+  const tomorrow = open.filter(t=>t.date===t1);
+  const week = open.filter(t=>t.date>t1 && t.date<=addDays(t0,7));
   const later = open.filter(t=>!t.date || t.date>addDays(t0,7));
-  const pending = Object.values(state.deals).filter(d=>d.stage!=='received' && d.stage!=='lost').reduce((s,d)=>s+commission(d),0);
 
   const d = new Date();
   const hr = d.getHours();
@@ -573,7 +701,6 @@ function viewToday(){
   if(todays.length) bits.push(`<b>${todays.length} ${todays.length===1?'thing':'things'}</b> on today${calls?`, ${calls} of them calls or meetings`:''}`);
   else bits.push('Nothing booked for today yet');
   if(overdue.length) bits.push(`<b>${overdue.length} overdue</b>`);
-  if(pending) bits.push(`<b>${aed(pending,true)}</b> commission in the pipeline`);
 
   const quiet = Object.values(state.clients).filter(c=>{
     if(!['Warm','Hot','Client','New'].includes(c.status)) return false;
@@ -594,24 +721,22 @@ function viewToday(){
       <div class="actions"><button class="btn" data-act="newClient">Add a client</button><button class="btn ghost" data-act="settings">Import from Excel</button></div></div>`;
     return h;
   }
-  h += `<div class="cols"><div class="col-main">`;
   if(overdue.length) h += `<h2 class="late">Overdue <small>${overdue.length}</small></h2><div class="list">${overdue.map(t=>taskRow(t,true)).join('')}</div>`;
-  h += `<h2>Today <small>${todays.length} open${doneToday.length?`, ${doneToday.length} done`:''}</small></h2>`;
-  h += (todays.length||doneToday.length) ? `<div class="list">${todays.map(t=>taskRow(t)).join('')}${doneToday.map(t=>taskRow(t)).join('')}</div>`
-       : `<div class="empty">Clear so far. <br><button class="btn small ghost" data-act="newTask" data-date="${t0}">Add a call or meeting</button></div>`;
-  if(week.length) h += `<h2>Next 7 days <small>${week.length}</small></h2><div class="list">${week.map(t=>taskRow(t,true)).join('')}</div>`;
+  const col = (title, sub, body) => `<section class="daycol"><h2>${title} <small>${sub}</small></h2>${body}</section>`;
+  const dayName = n => new Date(addDays(t0,n)+'T12:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+  h += `<div class="daycols">`;
+  h += col('Today', `${todays.length} open${doneToday.length?`, ${doneToday.length} done`:''}`,
+    (todays.length||doneToday.length) ? `<div class="list">${todays.map(t=>taskRow(t)).join('')}${doneToday.map(t=>taskRow(t)).join('')}</div>`
+    : `<div class="empty">Clear so far.<br><button class="btn small ghost" data-act="newTask" data-date="${t0}">Add a call or meeting</button></div>`);
+  h += col('Tomorrow', `${dayName(1)}${tomorrow.length?` · ${tomorrow.length}`:''}`,
+    tomorrow.length ? `<div class="list">${tomorrow.map(t=>taskRow(t)).join('')}</div>`
+    : `<div class="empty">Nothing booked.<br><button class="btn small ghost" data-act="newTask" data-date="${t1}">Add for tomorrow</button></div>`);
+  h += col('Next 7 days', `${dayName(2)} – ${dayName(7)}${week.length?` · ${week.length}`:''}`,
+    week.length ? `<div class="list">${week.map(t=>taskRow(t,true)).join('')}</div>` : `<div class="empty">Nothing booked yet.</div>`);
+  h += `</div>`;
   if(later.length){
     h += `<h2>Later <small>${later.length}</small></h2>`;
     h += ui.showLater ? `<div class="list">${later.map(t=>taskRow(t,true)).join('')}</div>` : `<button class="more" data-act="showLater">Show ${later.length} more</button>`;
-  }
-  h += `</div><aside class="col-side">`;
-  const dealsAll = Object.values(state.deals);
-  const awaitingD = dealsAll.filter(d=>d.stage==='closed'), progD = dealsAll.filter(d=>['negotiating','reserved','spa'].includes(d.stage));
-  if(dealsAll.length){
-    h += `<h2>Pipeline</h2><div class="list">
-      <div class="row tap" data-act="tab" data-v="money"><div class="grow"><div class="t">Awaiting payment</div><div class="s">${awaitingD.length} deal${awaitingD.length===1?'':'s'}</div></div><div class="amt">${aed(awaitingD.reduce((x,d)=>x+commission(d),0),true)}</div></div>
-      <div class="row tap" data-act="tab" data-v="deals"><div class="grow"><div class="t">In progress</div><div class="s">${progD.length} deal${progD.length===1?'':'s'}</div></div><div class="amt">${aed(progD.reduce((x,d)=>x+commission(d),0),true)}</div></div>
-    </div>`;
   }
   if(quiet.length){
     h += `<h2>Going quiet <small>no contact in 14+ days</small></h2><div class="list">${quiet.map(c=>{
@@ -621,26 +746,56 @@ function viewToday(){
         <button class="btn small ghost" data-act="newTask" data-client="${c.id}" data-type="Follow-up" data-date="${t0}">Follow up</button></div>`;
     }).join('')}</div>`;
   }
-  h += `</aside></div>`;
   return h;
 }
 
+const leadDate = c => c.leadDate || (c.createdAt ? dstr(new Date(c.createdAt)) : '');
+const MONTH_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function cfMatch(c, f, skip){
+  if(skip!=='s1' && f.s1 && c.source!==f.s1) return false;
+  if(skip!=='s2' && f.s2 && c.sourceSub!==f.s2) return false;
+  if(skip!=='s3' && f.s3 && c.sourceSub2!==f.s3) return false;
+  const d = leadDate(c);
+  if(skip!=='y' && f.y && !d.startsWith(f.y)) return false;
+  if(skip!=='m' && f.m && d.slice(5,7)!==f.m) return false;
+  return true;
+}
+function clientFilterBar(all, f){
+  const base = all.filter(c=>ui.clientFilter==='all'||c.status===ui.clientFilter);
+  const cnt = (field, val, skip) => base.filter(c=>cfMatch(c, skip==='y'?{...f, m:''}:skip==='s1'?{...f, s2:'', s3:''}:skip==='s2'?{...f, s3:''}:f, skip) && (field==='y' ? leadDate(c).startsWith(val) : field==='m' ? leadDate(c).slice(5,7)===val : c[field]===val)).length;
+  const k1 = f.s1 ? srcKids(f.s1) : [], k2 = f.s1 && f.s2 ? srcKids(f.s1, f.s2) : [];
+  const years = [...new Set(['2024','2025','2026', ...all.map(c=>leadDate(c).slice(0,4)).filter(Boolean)])].sort().reverse();
+  const sel = (name, label, list, cur, field, skip, lab) => `<label class="fsel ${cur?'on':''}"><span>${label}</span><select data-cf="${name}"><option value="">All</option>${list.map(v=>`<option value="${esc(v)}" ${cur===v?'selected':''}>${esc(lab?lab(v):v)} (${cnt(field, v, skip)})</option>`).join('')}</select></label>`;
+  const any = f.s1||f.y;
+  return `<div class="fbar">
+    ${sel('s1','Source', SOURCES, f.s1, 'source', 's1')}
+    ${k1.length?sel('s2', f.s1==='Roadshow'?'Roadshow':f.s1==='Product Campaign'?'Campaign':'Detail', k1, f.s2, 'sourceSub', 's2'):''}
+    ${k2.length?sel('s3','Event', k2, f.s3, 'sourceSub2', 's3'):''}
+    ${sel('y','Year created', years, f.y, 'y', 'y')}
+    ${f.y?sel('m','Month', ['01','02','03','04','05','06','07','08','09','10','11','12'], f.m, 'm', 'm', v=>MONTH_SHORT[+v-1]):''}
+    ${any?`<button class="more" data-act="cfClear" style="align-self:end;padding:8px 2px">Clear</button>`:''}
+  </div>`;
+}
 function viewClients(){
   const all = Object.values(state.clients);
   const counts = {all:all.length}; CLIENT_STATUS.forEach(s=>counts[s]=all.filter(c=>c.status===s).length);
   const q = ui.clientQuery.toLowerCase();
-  const list = all.filter(c=>(ui.clientFilter==='all'||c.status===ui.clientFilter) &&
+  const cf = ui.cf || (ui.cf = {s1:'',s2:'',s3:'',y:'',m:''});
+  const list = all.filter(c=>(ui.clientFilter==='all'||c.status===ui.clientFilter) && (!ui.clientStage || (c.stage||'')===ui.clientStage) && cfMatch(c, cf) &&
     (!q || [c.name,c.phone,c.email,c.interest,c.notes].join(' ').toLowerCase().includes(q)))
     .sort((a,b)=>(a.name||'').localeCompare(b.name||''));
   const nextTask = id => sortTasks(openTasks().filter(t=>t.clientId===id))[0];
   let h = `<h1>Clients</h1>
     <input class="search" type="search" placeholder="Search name, phone, project…" value="${esc(ui.clientQuery)}" data-input="clientQuery" aria-label="Search clients">
-    <div class="chips">${['all',...CLIENT_STATUS].map(s=>`<button class="chip ${ui.clientFilter===s?'on':''}" data-act="clientFilter" data-v="${s}">${s==='all'?'All':STATUS_LABEL[s]}<span>${counts[s]}</span></button>`).join('')}</div><div style="height:12px"></div>`;
+    <div class="chips">${['all',...CLIENT_STATUS].map(s=>`<button class="chip ${ui.clientFilter===s?'on':''}" data-act="clientFilter" data-v="${s}">${s==='all'?'All':STATUS_LABEL[s]}<span>${counts[s]}</span></button>`).join('')}</div>
+    ${(()=>{ const byS = all.filter(c=>ui.clientFilter==='all'||c.status===ui.clientFilter); return `<div class="chips stagechips">${['',...STAGE_LIST].map(st=>`<button class="chip sm ${ (ui.clientStage||'')===st?'on':''}" data-act="clientStage" data-v="${esc(st)}">${st||'All stages'}<span>${st?byS.filter(c=>(c.stage||'')===st).length:byS.length}</span></button>`).join('')}</div>`; })()}
+    ${clientFilterBar(all, cf)}`;
   if(!all.length) return h+`<div class="empty">No clients yet. Add one, or upload your Excel file from the menu at the top.<div class="actions"><button class="btn" data-act="newClient">Add a client</button></div></div>`;
-  if(!list.length) return h+`<div class="empty">No clients match that search.</div>`;
+  if(ui.cf.s1||ui.cf.y) h += `<p class="hint" style="margin:0 4px 10px">${list.length} lead${list.length===1?'':'s'}${ui.cf.s1?' from '+esc([ui.cf.s3||ui.cf.s2, !ui.cf.s3&&!ui.cf.s2?ui.cf.s1:''].filter(Boolean).join('')):''}${ui.cf.y?' created in '+(ui.cf.m?MONTH_SHORT[+ui.cf.m-1]+' ':'')+ui.cf.y:''}</p>`;
+  if(!list.length) return h+`<div class="empty">No clients match these filters.</div>`;
   h += `<div class="list grid2">${list.map(c=>{
     const nt = nextTask(c.id);
-    const sub = nt ? `${nt.type} ${niceDate(nt.date).toLowerCase()==='today'?'today':'· '+niceDate(nt.date)}` : (c.interest||c.phone||'');
+    const sub = [c.stage, nt ? `${nt.type} ${niceDate(nt.date).toLowerCase()==='today'?'today':niceDate(nt.date)}` : (sourcePath(c)||c.interest||c.phone||'')].filter(Boolean).join(' · ');
     return `<div class="row tap" data-act="client" data-id="${c.id}"><div class="avatar">${esc(initials(c.name))}</div>
       <div class="grow"><div class="t">${esc(c.name)}</div><div class="s">${esc(sub)||'&nbsp;'}</div></div>
       <span class="pill ${c.status}">${STATUS_LABEL[c.status]||c.status}</span></div>`;
@@ -1304,7 +1459,7 @@ function viewProjects(){
   h += `<p class="lede">Keep project details, prices, floor plans and brochure pages in one place, then create a summary document for any client.</p>`;
   h += `<div class="calc-actions" style="margin-bottom:14px"><button class="btn" data-act="prjNew" style="flex:0 1 auto">Add a project</button></div>`;
   if(!list.length) return h + `<div class="empty">No projects yet. Add one with its unit prices, payment plan and images.</div>`;
-  h += `<div class="pgridcards">${list.map(pr=>{ const img = pr.images && pr.images[0]; const mp = projMinPrice(pr);
+  h += `<div class="pgridcards">${list.map(pr=>{ const img = !IS_PHONE && pr.images && pr.images[0]; const mp = projMinPrice(pr);
     return `<button class="pcard" data-act="prjOpen" data-id="${pr.id}">
       <div class="pimg">${img?`<img src="${esc(assetUrl(img.id))}" alt="">`:`<span>${I.deals}</span>`}</div>
       <div class="pbody"><b>${esc(pr.name||'Untitled project')}</b><span>${esc([pr.developer, pr.location].filter(Boolean).join(' · '))||'&nbsp;'}</span>
@@ -1352,16 +1507,17 @@ function viewProjectEdit(pr){
     ${prjRows(pr,'nearby',[['name','e.g. Dubai Mall','text',2.4],['mins','min','num',0.8]])}
     <button class="btn small ghost" data-act="prjRowAdd" data-k="nearby" style="margin:8px 0">Add a place</button>
     <div class="sub" style="margin-top:12px;font-size:15px">Location map <small class="hint" style="margin:0">optional</small></div>
-    ${pr.map?`<div class="thumbs"><div class="thumb"><img src="${esc(assetUrl(pr.map.id))}" alt="Location map"><button class="tx" data-act="prjMapRm" aria-label="Remove map">${I.close}</button></div></div>`
+    ${pr.map&&!IS_PHONE?`<div class="thumbs"><div class="thumb"><img src="${esc(assetUrl(pr.map.id))}" alt="Location map"><button class="tx" data-act="prjMapRm" aria-label="Remove map">${I.close}</button></div></div>`
       : assetsOn?`<button class="btn small ghost" data-act="prjPick" data-v="map">Upload map image</button>`:''}
   </div>
   </div><aside class="col-side">
   <div class="calc-card"><h4>Images <small>first image is the cover</small></h4>
-    <div class="thumbs">${(pr.images||[]).map((im,i)=>`<div class="thumb"><img src="${esc(assetUrl(im.id))}" alt="">${i?`<button class="tl" data-act="prjImgFirst" data-id="${im.id}" aria-label="Make cover">★</button>`:'<span class="cov">Cover</span>'}<button class="tx" data-act="prjImgRm" data-id="${im.id}" aria-label="Remove image">${I.close}</button></div>`).join('')}</div>
-    ${assetsOn?`<button class="btn small ghost" data-act="prjPick" data-v="images" style="margin:8px 0">Upload images</button>`:`<p class="hint">Uploads work when the app is opened from your claude.ai link.</p>`}
+    ${IS_PHONE ? `<p class="hint" style="margin:0">${(pr.images||[]).length} image${(pr.images||[]).length===1?'':'s'}, ${(pr.floorplans||[]).length} floor plan${(pr.floorplans||[]).length===1?'':'s'} and ${(pr.brochure||[]).reduce((a,b)=>a+b.pages,0)} brochure pages are saved in your desktop app. Add or change them there.</p>` : ''}
+    <div class="thumbs" ${IS_PHONE?'hidden':''}>${(pr.images||[]).map((im,i)=>`<div class="thumb"><img src="${esc(assetUrl(im.id))}" alt="">${i?`<button class="tl" data-act="prjImgFirst" data-id="${im.id}" aria-label="Make cover">★</button>`:'<span class="cov">Cover</span>'}<button class="tx" data-act="prjImgRm" data-id="${im.id}" aria-label="Remove image">${I.close}</button></div>`).join('')}</div>
+    ${assetsOn?`<button class="btn small ghost" data-act="prjPick" data-v="images" style="margin:8px 0">Upload images</button>`:IS_PHONE?'':`<p class="hint">Uploads work when the app is opened from your claude.ai link.</p>`}
   </div>
   <div class="calc-card"><h4>Floor plans</h4>
-    ${(pr.floorplans||[]).map(fp=>`<div class="fprow"><img src="${esc(assetUrl(fp.id))}" alt=""><div style="flex:1;min-width:0"><select data-prj="floorplans.${fp.id}.type" aria-label="Unit type">${opt(BEDS, fp.type||'1 BR')}</select><input data-prj="floorplans.${fp.id}.label" data-type="text" value="${esc(fp.label||'')}" placeholder="Label, e.g. Type A, 1,150 sq ft"></div><button class="iconbtn rm" data-act="prjRowRm" data-k="floorplans" data-id="${fp.id}" aria-label="Remove">${I.close}</button></div>`).join('')}
+    ${(IS_PHONE?[]:(pr.floorplans||[])).map(fp=>`<div class="fprow"><img src="${esc(assetUrl(fp.id))}" alt=""><div style="flex:1;min-width:0"><select data-prj="floorplans.${fp.id}.type" aria-label="Unit type">${opt(BEDS, fp.type||'1 BR')}</select><input data-prj="floorplans.${fp.id}.label" data-type="text" value="${esc(fp.label||'')}" placeholder="Label, e.g. Type A, 1,150 sq ft"></div><button class="iconbtn rm" data-act="prjRowRm" data-k="floorplans" data-id="${fp.id}" aria-label="Remove">${I.close}</button></div>`).join('')}
     ${assetsOn?`<button class="btn small ghost" data-act="prjPick" data-v="floorplans" style="margin:8px 0">Upload floor plans (image or PDF)</button>`:''}
     ${(pr.source?.layouts||[]).length?`<details style="margin-top:4px"><summary class="hint" style="cursor:pointer;margin:0">DXBInteract floor plans (${pr.source.layouts.length})</summary><div style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:6px;font-size:13.5px">${pr.source.layouts.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener" style="color:var(--sea)">${esc(l.bed)}, ${pn(l.size).toLocaleString('en-US')} ft²</a>`).join('')}</div></details>`:''}
   </div>
@@ -1369,7 +1525,7 @@ function viewProjectEdit(pr){
     ${(pr.brochure||[]).map(b=>`<div class="xrow" style="align-items:center"><span style="flex:1;font-size:14px">${esc(b.name||'Brochure')} <span class="hint" style="margin:0">· ${b.pages} page${b.pages===1?'':'s'}</span></span><button class="iconbtn rm" data-act="prjRowRm" data-k="brochure" data-id="${b.id}" aria-label="Remove">${I.close}</button></div>`).join('')}
     ${assetsOn?`<button class="btn small ghost" data-act="prjPick" data-v="brochure" style="margin:8px 0">Add pages from a brochure (PDF)</button>`:''}
   </div>
-  <div class="calc-actions"><button class="btn block" style="background:var(--ink);color:var(--bg)" data-act="prjDoc">Create client document (PDF)</button></div>
+  <div class="calc-actions">${IS_PHONE?`<p class="hint" style="margin:0">Create the client document from your desktop app, where the images and brochure pages are.</p>`:`<button class="btn block" style="background:var(--ink);color:var(--bg)" data-act="prjDoc">Create client document (PDF)</button>`}</div>
   <div class="calc-actions"><button class="btn danger" data-act="prjDelete">Delete project</button></div>
   </aside></div>
   <input type="file" id="prjFile" style="display:none">`;
@@ -2568,6 +2724,236 @@ document.addEventListener('pointerup', e=>{
 });
 document.addEventListener('click', e=>{ if(mmMoved && e.target.closest && e.target.closest('#mview')){ e.stopPropagation(); e.preventDefault(); } }, true);
 
+/* ---------- client stages, call log and AI summaries ---------- */
+const STAGE_LIST = ['No Contact','5+ Attempts','Initial Contact Made','1st Call Complete','Meeting Complete','Converted'];
+const LOG_TYPES = ['Call','Meeting','WhatsApp','Email','Note'];
+let sampleCap = null;
+const clientLogs = id => Object.values(state.notes||{}).filter(n=>n.clientId===id).sort((a,b)=>(b.date||'').localeCompare(a.date||'') || (b.createdAt||0)-(a.createdAt||0));
+function setLastContact(id, d){ const c = state.clients[id]; if(!c || !d) return; if(!c.lastContact || d > c.lastContact) save('clients', {...c, lastContact:d}); }
+function aiClientContext(c){
+  const logs = clientLogs(c.id).slice(0,10);
+  return `Client: ${c.name}
+Status: ${STATUS_LABEL[c.status]||c.status||''}${c.stage?`, stage: ${c.stage}`:''}
+Source: ${sourcePath(c)||'unknown'}
+Budget: ${c.budget||'unknown'}; looking for: ${c.interest||'unknown'}
+Broker's notes about the client:
+${c.notes||'(none)'}
+Current profile summary:
+${(c.aiProfile?.bullets||[]).map(b=>'- '+b).join('\n')||'(none yet)'}
+Recent interactions (newest first):
+${logs.filter(l=>l.summary&&l.summary.length).map(l=>`${l.date} ${l.type}: ${l.summary.join('; ')}`).join('\n')||'(none)'}`;
+}
+const AI_RULES = `You help a real estate broker in Dubai keep track of clients. Use only what the notes say; never invent facts, numbers or names. Write short, plain bullet points (under 18 words each), no markdown symbols inside the strings.`;
+async function aiRun(prompt){
+  if(!sampleCap) throw {code:'not_granted'};
+  try{ return await sampleCap.json(prompt, {modelTier:'default'}); }
+  catch(e){ throw e && e.code ? e : {code:'bad_output'}; }
+}
+function aiError(e){
+  const c = e && e.code;
+  if(c==='not_granted') return 'AI summaries work in your desktop app on claude.ai.';
+  if(c==='rate_limited') return 'Claude is busy right now. Try again in a minute.';
+  if(c==='cancelled') return 'Cancelled.';
+  return 'The summary couldn\'t be written this time. Your notes are saved; try again later.';
+}
+async function aiSummarizeLog(noteId, opts={}){
+  const n = state.notes[noteId]; const c = n && state.clients[n.clientId]; if(!n || !c) return null;
+  const prompt = `${AI_RULES}
+
+${aiClientContext(c)}
+
+New ${n.type.toLowerCase()} on ${n.date}. The broker's raw notes:
+"""${n.text}"""
+
+Return ONLY a JSON object with these keys:
+"summary": 2 to 5 bullets on what was discussed and learned,
+"nextSteps": 1 to 4 objects {"text": concrete action for the broker, "dueInDays": whole number 0-30},
+"stage": the client's stage after this interaction if the notes clearly show it, one of ${JSON.stringify(STAGE_LIST)}, otherwise null,
+"profile": 3 to 8 bullets of lasting facts about the client (goals, budget, timeline, preferences, family, properties owned or of interest, objections), merging the current profile with anything new.`;
+  const r = await aiRun(prompt);
+  const arr = v => Array.isArray(v) ? v.map(x=>String(x).trim()).filter(Boolean).slice(0,8) : [];
+  const steps = Array.isArray(r?.nextSteps) ? r.nextSteps.map(s=>({text:String(s?.text||s||'').trim(), dueInDays:Math.max(0, Math.min(60, parseInt(s?.dueInDays)||2))})).filter(s=>s.text).slice(0,5) : [];
+  const upd = {...state.notes[noteId], summary:arr(r?.summary), nextSteps:steps, stageHint: STAGE_LIST.includes(r?.stage) ? r.stage : null, ai:'done'};
+  save('notes', upd);
+  const prof = arr(r?.profile); if(prof.length){ const cc = state.clients[c.id]; save('clients', {...cc, aiProfile:{bullets:prof, at:Date.now()}}); }
+  return upd;
+}
+async function aiRefreshProfile(clientId){
+  const c = state.clients[clientId]; if(!c) return;
+  const prompt = `${AI_RULES}
+
+${aiClientContext(c)}
+
+Return ONLY a JSON object: {"profile": 3 to 8 bullets of lasting facts about this client (goals, budget, timeline, preferences, family, properties owned or of interest, objections), based on everything above}.`;
+  const r = await aiRun(prompt);
+  const prof = Array.isArray(r?.profile) ? r.profile.map(x=>String(x).trim()).filter(Boolean).slice(0,8) : [];
+  if(prof.length){ const cc = state.clients[clientId]; save('clients', {...cc, aiProfile:{bullets:prof, at:Date.now()}}); }
+}
+function logCallSheet(clientId, preset){
+  const c = state.clients[clientId]; if(!c) return;
+  const t = preset?.type || 'Call';
+  openSheet(`<h3>Log ${esc(c.name.split(' ')[0])}</h3>
+    <form id="f" data-kind="calllog" data-client="${clientId}">
+      <div class="field"><label>Type</label><div class="segs" role="radiogroup">${LOG_TYPES.map(k=>`<button type="button" role="radio" aria-checked="${t===k}" class="${t===k?'on':''}" data-act="seg" data-v="${k}">${I[k==='Meeting'?'Meeting':k==='WhatsApp'?'wa':k==='Email'?'mail':k==='Note'?'Task':'Call']}${k}</button>`).join('')}</div><input type="hidden" name="type" value="${t}"></div>
+      <div class="field"><label for="lg1">Date</label><input id="lg1" type="date" name="date" value="${today()}" max="${today()}"></div>
+      <div class="field"><label for="lg2">What was discussed?</label><textarea id="lg2" name="text" rows="7" required placeholder="Type or dictate freely, e.g. Spoke about Creek Waters 2BR, budget up to 2.8M, wife prefers high floor, wants payment plan by Thursday, worried about handover delays…"></textarea></div>
+      <p class="hint">${sampleCap?'Claude will summarise this into bullet points and suggest your next steps.':'Saved now. Claude will summarise it and suggest next steps when you open the desktop app.'}</p>
+      <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn">Save</button></div>
+    </form>`);
+}
+function logResultSheet(noteId){
+  const n = state.notes[noteId]; if(!n) return; const c = state.clients[n.clientId];
+  openSheet(`<h3>${esc(n.type)} with ${esc((c?.name||'').split(' ')[0])}</h3>
+    <p class="hint" style="margin:-8px 0 12px">${esc(new Date(n.date+'T12:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}))}</p>
+    <div class="sub" style="margin-top:0">Summary</div>
+    <ul class="blts">${(n.summary||[]).map(b=>`<li>${esc(b)}</li>`).join('')}</ul>
+    ${(n.nextSteps||[]).length?`<div class="sub">Next steps</div>
+    <form id="f" data-kind="nextsteps" data-id="${noteId}">
+      ${n.nextSteps.map((s,i)=>`<label class="nstep"><input type="checkbox" name="s${i}" checked><span>${esc(s.text)}</span><input type="date" name="d${i}" value="${addDays(n.date>today()?n.date:today(), s.dueInDays)}" aria-label="Due date"></label>`).join('')}
+      ${n.stageHint && c && STAGE_LIST.indexOf(n.stageHint) > STAGE_LIST.indexOf(c.stage||'')?`<label class="nstep"><input type="checkbox" name="stage" checked><span>Set stage to <b>${esc(n.stageHint)}</b></span></label>`:''}
+      <div class="actions"><button type="button" class="btn ghost" data-act="close">Done</button><button class="btn">Add ticked as follow-ups</button></div>
+    </form>`:`<div class="actions"><button class="btn" data-act="close">Done</button></div>`}`);
+}
+async function runLogAi(noteId, showResult){
+  const n = state.notes[noteId]; if(!n) return;
+  try{
+    if(showResult) openSheet(`<h3>Summarising…</h3><p class="hint">Claude is reading your notes and working out next steps.</p>`);
+    const r = await aiSummarizeLog(noteId);
+    if(showResult && r) logResultSheet(noteId);
+  }catch(e){ if(showResult){ closeSheet(); } if(e && e.code==='not_granted') sampleCap = null; toast(aiError(e)); render(); }
+}
+async function runPending(clientId){
+  const pend = clientLogs(clientId).filter(n=>n.ai==='pending').reverse();
+  if(!pend.length) return;
+  toast(`Summarising ${pend.length} note${pend.length===1?'':'s'}…`);
+  for(const n of pend){ try{ await aiSummarizeLog(n.id); }catch(e){ toast(aiError(e)); return; } }
+  toast('Summaries updated.');
+}
+function clientAiBlock(c){
+  const logs = clientLogs(c.id), pend = logs.filter(n=>n.ai==='pending').length;
+  const prof = c.aiProfile?.bullets || [];
+  return `<div class="aicard"><div class="aihead"><span>✦ About ${esc(c.name.split(' ')[0])}</span>${sampleCap && (c.notes || logs.length) ? `<button class="more" style="padding:0" data-act="aiProfile" data-id="${c.id}">${prof.length?'Refresh':'Summarise'}</button>`:''}</div>
+      ${prof.length ? `<ul class="blts">${prof.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>` : `<p class="hint" style="margin:4px 0 0">${c.notes||logs.length ? (sampleCap?'Tap Summarise to turn your notes into key points.':'Key points appear once your notes are summarised in the desktop app.') : 'Add notes or log a call, and Claude will keep a short summary of what you know about this client here.'}</p>`}
+    </div>
+    <div class="sub">Call log <button class="btn small" data-act="logCall" data-id="${c.id}">Log a call</button></div>
+    ${pend && sampleCap ? `<button class="btn small ghost block" style="margin-bottom:8px" data-act="aiPending" data-id="${c.id}">Summarise ${pend} note${pend===1?'':'s'} from your phone</button>` : ''}
+    ${logs.length ? `<div class="logs">${logs.map(n=>`<div class="logrow tap" data-act="logOpen" data-id="${n.id}">
+        <div class="lhead"><b>${esc(n.type)}</b><span>${esc(new Date(n.date+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}))}</span></div>
+        ${(n.summary||[]).length ? `<ul class="blts sm">${n.summary.slice(0,3).map(b=>`<li>${esc(b)}</li>`).join('')}</ul>` : `<p class="lraw">${esc((n.text||'').slice(0,160))}${(n.text||'').length>160?'…':''}</p>${n.ai==='pending'?'<span class="tag">summary pending</span>':''}`}
+        ${(n.nextSteps||[]).length ? `<div class="lnext">Next: ${esc(n.nextSteps[0].text)}${n.nextSteps.length>1?` +${n.nextSteps.length-1} more`:''}</div>` : ''}
+      </div>`).join('')}</div>` : `<div class="empty" style="padding:14px 16px">No calls logged yet.</div>`}`;
+}
+function logDetailSheet(noteId){
+  const n = state.notes[noteId]; if(!n) return;
+  if((n.summary||[]).length && (n.nextSteps||[]).length){ logResultSheet(noteId); const f = document.getElementById('f'); if(f) f.insertAdjacentHTML('beforebegin', `<details class="rawnotes"><summary>Your original notes</summary><p>${esc(n.text)}</p></details>`); addLogDelete(noteId); return; }
+  openSheet(`<h3>${esc(n.type)}</h3><p class="hint" style="margin:-8px 0 12px">${esc(n.date)}</p>
+    ${(n.summary||[]).length?`<ul class="blts">${n.summary.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`:''}
+    <div class="note">${esc(n.text)}</div>
+    <div class="actions">${n.ai==='pending'&&sampleCap?`<button class="btn" data-act="logAi" data-id="${noteId}">Summarise now</button>`:''}<button class="btn ghost" data-act="close">Close</button></div>`);
+  addLogDelete(noteId);
+}
+function addLogDelete(noteId){ $sheet.insertAdjacentHTML('beforeend', `<div style="margin-top:14px"><button class="btn danger" data-act="logDel" data-id="${noteId}">Delete this log</button></div>`); }
+
+/* ---------- Overview ---------- */
+if(ui.showMoney==null) ui.showMoney = false;
+function periodBounds(){
+  const now = new Date(), t = today();
+  const dow = (now.getDay()+6)%7; // Monday = 0
+  const weekStart = addDays(t, -dow);
+  const m0 = t.slice(0,7);
+  const pm = new Date(now.getFullYear(), now.getMonth()-1, 1), prevMonth = `${pm.getFullYear()}-${pad(pm.getMonth()+1)}`;
+  const m3 = new Date(now.getFullYear(), now.getMonth()-2, 1), threeStart = `${m3.getFullYear()}-${pad(m3.getMonth()+1)}-01`;
+  return {t, weekStart, month:m0, prevMonth, threeStart, year:String(now.getFullYear()), monthsElapsed: now.getMonth()+1,
+    monthName: now.toLocaleDateString('en-GB',{month:'long'}), prevName: pm.toLocaleDateString('en-GB',{month:'long'})};
+}
+const tsDay = ts => ts ? dstr(new Date(ts)) : '';
+function overviewStats(){
+  const P = periodBounds(), C = Object.values(state.clients), T = Object.values(state.tasks), N = Object.values(state.notes||{}), D = Object.values(state.deals);
+  const inWeek = d => d && d >= P.weekStart && d <= P.t, inMonth = d => d && d.startsWith(P.month), inPrev = d => d && d.startsWith(P.prevMonth);
+  const meetingDates = [...N.filter(n=>n.type==='Meeting').map(n=>n.date), ...T.filter(t=>t.done && (t.type==='Meeting'||t.type==='Viewing')).map(t=>t.doneOn||t.date)];
+  const touched = new Map(); C.forEach(c=>{ const d = tsDay(c.updatedAt); if(d) touched.set(c.id, d); });
+  N.forEach(n=>{ const d = n.date; if(d && (!touched.get(n.clientId) || d > touched.get(n.clientId))) touched.set(n.clientId, d); });
+  const conv = C.filter(c=>c.convertedAt);
+  const received = D.filter(d=>d.stage==='received'), pendingD = D.filter(d=>!['received','lost'].includes(d.stage));
+  const paidOn = d => d.paidDate || tsDay(d.updatedAt);
+  const recYear = received.filter(d=>paidOn(d).startsWith(P.year)).reduce((s,d)=>s+commission(d),0);
+  const sold = D.filter(d=>['spa','closed','received'].includes(d.stage));
+  const soldOn = d => d.closedAt || d.paidDate || tsDay(d.updatedAt);
+  const soldYear = sold.filter(d=>soldOn(d).startsWith(P.year)), soldMonth = sold.filter(d=>soldOn(d).startsWith(P.month));
+  const stageCount = {}; STAGE_LIST.forEach(s=>stageCount[s]=0); C.forEach(c=>{ if(c.stage) stageCount[c.stage]++; });
+  const statusCount = {}; CLIENT_STATUS.forEach(s=>statusCount[s]=C.filter(c=>c.status===s).length);
+  const srcMonth = {}; C.filter(c=>inMonth(leadDate(c))).forEach(c=>{ const k = c.source||'Not set'; srcMonth[k] = (srcMonth[k]||0)+1; });
+  const open = T.filter(t=>!t.done);
+  return {P,
+    leadsMonth: C.filter(c=>inMonth(leadDate(c))).length, leadsPrev: C.filter(c=>inPrev(leadDate(c))).length,
+    meetWeek: meetingDates.filter(inWeek).length, meetMonth: meetingDates.filter(inMonth).length,
+    updWeek: [...touched.values()].filter(inWeek).length, updMonth: [...touched.values()].filter(inMonth).length,
+    convMonth: conv.filter(c=>inMonth(c.convertedAt)).length, convPrev: conv.filter(c=>inPrev(c.convertedAt)).length, conv3: conv.filter(c=>c.convertedAt>=P.threeStart && c.convertedAt<=P.t).length,
+    pending: pendingD.reduce((s,d)=>s+commission(d),0), awaiting: D.filter(d=>d.stage==='closed').reduce((s,d)=>s+commission(d),0),
+    recYear, avg: recYear / P.monthsElapsed,
+    soldYearN: soldYear.length, soldYearV: soldYear.reduce((s,d)=>s+pn(d.price),0), soldMonthN: soldMonth.length, soldMonthV: soldMonth.reduce((s,d)=>s+pn(d.price),0),
+    pipeN: pendingD.filter(d=>!['closed'].includes(d.stage)).length, pipeV: pendingD.filter(d=>d.stage!=='closed').reduce((s,d)=>s+pn(d.price),0),
+    stageCount, statusCount, srcMonth, total:C.length,
+    overdue: open.filter(t=>t.date && t.date < P.t).length, dueToday: open.filter(t=>t.date===P.t).length, dueWeek: open.filter(t=>t.date>P.t && t.date<=addDays(P.t,7)).length,
+    callsWeek: N.filter(n=>inWeek(n.date) && n.type!=='Note').length, callsMonth: N.filter(n=>inMonth(n.date) && n.type!=='Note').length};
+}
+const money$ = (v, compact) => ui.showMoney ? aed(v, compact) : 'AED ••••••';
+function viewOverview(){
+  const S = overviewStats(), P = S.P;
+  const C = Object.values(state.clients), N = Object.values(state.notes||{}), T = Object.values(state.tasks);
+  const monthEnd = ym => { const [y,m] = ym.split('-').map(Number); return dstr(new Date(y, m, 0)); };
+  const R = [['This week', P.weekStart, P.t, 'Week'], ['This month', P.month+'-01', P.t, MONTH_SHORT[+P.month.slice(5)-1]], [P.prevName, P.prevMonth+'-01', monthEnd(P.prevMonth), MONTH_SHORT[+P.prevMonth.slice(5)-1]], ['Last 3 months', P.threeStart, P.t, '3 mo']];
+  const within = (d, r) => d && d >= r[1] && d <= r[2];
+  const meetDates = [...N.filter(n=>n.type==='Meeting').map(n=>n.date), ...T.filter(t=>t.done && (t.type==='Meeting'||t.type==='Viewing')).map(t=>t.doneOn||t.date)];
+  const touches = {}; C.forEach(c=>{ (touches[c.id] = touches[c.id]||[]).push(tsDay(c.updatedAt)); }); N.forEach(n=>{ (touches[n.clientId] = touches[n.clientId]||[]).push(n.date); });
+  const rows = [
+    ['New leads', r => C.filter(c=>within(leadDate(c), r)).length],
+    ['Leads updated', r => Object.values(touches).filter(ds=>ds.some(d=>within(d, r))).length],
+    ['Calls & messages', r => N.filter(n=>n.type!=='Note' && within(n.date, r)).length],
+    ['Meetings', r => meetDates.filter(d=>within(d, r)).length],
+    ['Converted', r => C.filter(c=>within(c.convertedAt, r)).length]
+  ];
+  const arrow = (a, b) => a===b ? '' : `<i class="${a>b?'up':'dn'}">${a>b?'▲':'▼'}</i>`;
+  // six-month trend
+  const months = []; for(let i=5;i>=0;i--){ const d = new Date(); d.setDate(1); d.setMonth(d.getMonth()-i); months.push(`${d.getFullYear()}-${pad(d.getMonth()+1)}`); }
+  const trend = months.map(m=>({m, leads:C.filter(c=>leadDate(c).startsWith(m)).length, conv:C.filter(c=>(c.convertedAt||'').startsWith(m)).length}));
+  const tMax = Math.max(1, ...trend.map(x=>x.leads));
+  // status x stage
+  const STC = {'No Contact':'#C9D6D3','5+ Attempts':'#8FA9A5','Initial Contact Made':'#5E8F89','1st Call Complete':'#1F6F66','Meeting Complete':'#A87A22','Converted':'#12302F','':'var(--surface-2)'};
+  const sMax = Math.max(1, ...CLIENT_STATUS.map(s=>C.filter(c=>c.status===s).length));
+  const money = v => ui.showMoney ? aed(v, Math.abs(v) >= 1e6) : '••••••';
+  let h = `<h1>Overview</h1><p class="lede" style="margin-bottom:14px">${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})}</p>
+  <div class="cols calc ov"><div class="col-main">
+    <div class="calc-card"><div class="tscroll"><table class="score">
+      <thead><tr><th></th>${R.map(r=>`<th><span class="lgl">${esc(r[0])}</span><span class="sml">${esc(r[3])}</span></th>`).join('')}</tr></thead>
+      <tbody>${rows.map(([label, f])=>{ const v = R.map(r=>f(r)); return `<tr><th>${label}</th>${v.map((x,i)=>`<td>${x}${i===1?arrow(v[1], v[2]):''}</td>`).join('')}</tr>`; }).join('')}</tbody>
+    </table></div><p class="hint" style="margin:6px 0 0">Weeks start on Monday. ▲▼ compares this month with ${P.prevName}.</p></div>
+
+    <div class="calc-card"><h4>New leads per month <small><span class="lg1"></span>leads <span class="lg2"></span>converted</small></h4>
+      <div class="trend">${trend.map(x=>`<div><b>${x.leads}</b><i style="height:${x.leads/tMax*100}%">${x.conv?`<em style="height:${Math.min(100,x.conv/Math.max(1,x.leads)*100)}%"></em>`:''}</i><span>${MONTH_SHORT[+x.m.slice(5)-1]}</span></div>`).join('')}</div>
+    </div>
+
+    <div class="calc-card"><h4>Leads by status and stage <small>${C.length} total</small></h4>
+      ${CLIENT_STATUS.map(s=>{ const list = C.filter(c=>c.status===s), n = list.length; return `<div class="sbar"><span class="tap" data-act="ovStatus" data-v="${s}">${STATUS_LABEL[s]}</span><div class="segs2" style="width:${n/sMax*100}%">${[...STAGE_LIST,''].map(st=>{ const k = list.filter(c=>(c.stage||'')===st).length; return k?`<button data-act="ovSeg" data-s="${s}" data-v="${esc(st)}" style="flex:${k};background:${STC[st]}" title="${esc((st||'No stage')+': '+k)}" aria-label="${esc(STATUS_LABEL[s]+', '+(st||'no stage')+': '+k)}">${k}</button>`:''; }).join('')}</div><b>${n}</b></div>`; }).join('')}
+      <div class="slegend">${STAGE_LIST.map(st=>`<span><i style="background:${STC[st]}"></i>${st}</span>`).join('')}</div>
+    </div>
+  </div><aside class="col-side">
+    <div class="calc-card"><h4>Commission ${P.year} <button class="eye" data-act="toggleMoney" aria-pressed="${ui.showMoney}">${ui.showMoney?'Hide':'Show'}</button></h4>
+      <div class="mstrip ${ui.showMoney?'':'masked'}"><div><span>Received</span><b>${money(S.recYear)}</b></div><div><span>Pending</span><b>${money(S.pending)}</b></div><div><span>Monthly avg</span><b>${money(S.avg)}</b></div></div>
+      <div class="mstrip plain"><div><span>Deals closed</span><b>${S.soldYearN}</b></div><div><span>Sales volume</span><b>${aed(S.soldYearV,true).replace('AED ','')}</b></div><div><span>In progress</span><b>${S.pipeN}</b></div></div>
+      <p class="hint" style="margin:6px 0 0">Deals count as closed from SPA signed. Volume in AED.</p>
+    </div>
+    <div class="calc-card"><h4>Follow-ups</h4><div class="mstrip plain tap3">
+      <div class="tap" data-act="tab" data-v="today"><span>Overdue</span><b class="${S.overdue?'bad':''}">${S.overdue}</b></div>
+      <div class="tap" data-act="tab" data-v="today"><span>Today</span><b>${S.dueToday}</b></div>
+      <div class="tap" data-act="tab" data-v="today"><span>Next 7 days</span><b>${S.dueWeek}</b></div></div></div>
+    <div class="calc-card"><h4>Lead sources, ${P.monthName}</h4>
+      ${Object.keys(S.srcMonth).length ? Object.entries(S.srcMonth).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<div class="yr" style="grid-template-columns:1fr auto;padding:4px 0"><span>${esc(k)}</span><b>${n}</b></div>`).join('') : `<p class="hint" style="margin:0">No new leads this month yet.</p>`}
+    </div>
+  </aside></div>`;
+  return h;
+}
+
 /* ---------- client document (PDF) ---------- */
 let docCur = 'AED';
 const DOC_TITLE = 'Cash Flow / Rental Yield Summary';
@@ -2843,10 +3229,12 @@ function clientForm(c){
     <div class="two"><div class="field"><label for="cp">Phone / WhatsApp</label><input id="cp" name="phone" type="tel" value="${esc(c.phone||'')}" placeholder="+971 50…"></div>
     <div class="field"><label for="ce">Email</label><input id="ce" name="email" type="email" value="${esc(c.email||'')}"></div></div>
     <div class="two"><div class="field"><label for="cs">Status</label><select id="cs" name="status">${opt(CLIENT_STATUS,c.status,STATUS_LABEL)}</select></div>
-    <div class="field"><label for="cso">Source</label><select id="cso" name="source"><option value=""></option>${opt(SOURCES,c.source)}</select></div></div>
+    <div class="field"><label for="cst">Stage</label><select id="cst" name="stage"><option value=""></option>${opt(STAGE_LIST,c.stage||(isNew?'No Contact':''))}</select></div></div>
+    <div class="two"><div class="field"><label for="cld">Lead creation date</label><input id="cld" type="date" name="leadDate" value="${esc(leadDate(c)||today())}"></div><div></div></div>
+    <div id="srcBox" class="srcbox">${sourceFields(c)}</div>
     <div class="two"><div class="field"><label for="cb">Budget</label><input id="cb" name="budget" value="${esc(c.budget||'')}" placeholder="e.g. 2–3M"></div>
     <div class="field"><label for="ci">Looking for</label><input id="ci" name="interest" value="${esc(c.interest||'')}" placeholder="2BR, Creek Harbour"></div></div>
-    <div class="field"><label for="cno">Notes</label><textarea id="cno" name="notes">${esc(c.notes||'')}</textarea></div>
+    <div class="field"><label for="cno">Notes about the client</label><textarea id="cno" name="notes" rows="4" placeholder="Anything you know: family, goals, properties they own, what they like or dislike. Claude turns this into key points.">${esc(c.notes||'')}</textarea></div>
     ${isNew?`<div class="field"><label style="display:flex;gap:8px;align-items:center;font-weight:500;color:var(--ink)"><input type="checkbox" name="followup" checked style="width:auto"> Remind me to follow up in 2 days</label></div>`:''}
     <div class="actions">${isNew?'':`<button type="button" class="btn danger" data-act="del" data-kind="clients" data-id="${c.id}">Delete</button>`}<button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn">${isNew?'Add client':'Save'}</button></div>
   </form>`);
@@ -2886,7 +3274,7 @@ function clientSheet(id){
     const last = c.lastContact ? (c.lastContact===today()?'Today':`${niceDate(c.lastContact)} (${daysBetween(c.lastContact,today())} days ago)`) : 'Not logged';
     $sheet.innerHTML = `<div class="grab"></div>
       <div style="display:flex;align-items:center;gap:12px;margin:4px 0 14px"><div class="avatar" style="width:52px;height:52px;font-size:18px">${esc(initials(c.name))}</div>
-      <div class="grow" style="flex:1;min-width:0"><h3 style="margin:0">${esc(c.name)}</h3><span class="pill ${c.status}">${STATUS_LABEL[c.status]||c.status}</span></div>
+      <div class="grow" style="flex:1;min-width:0"><h3 style="margin:0">${esc(c.name)}</h3><span class="pill ${c.status}">${STATUS_LABEL[c.status]||c.status}</span>${c.stage?` <span class="pill stg">${esc(c.stage)}</span>`:''}</div>
       <button class="iconbtn" data-act="close" aria-label="Close">${I.close}</button></div>
       <div class="contact">
         <a href="tel:${esc(phone)}" class="${phone?'':'off'}" target="_top" data-act="logContact" data-id="${id}">${I.Call}Call</a>
@@ -2898,10 +3286,12 @@ function clientSheet(id){
         ${c.email?`<dt>Email</dt><dd>${esc(c.email)}</dd>`:''}
         ${c.budget?`<dt>Budget</dt><dd>${esc(c.budget)}</dd>`:''}
         ${c.interest?`<dt>Looking for</dt><dd>${esc(c.interest)}</dd>`:''}
-        ${c.source?`<dt>Source</dt><dd>${esc(c.source)}</dd>`:''}
-        <dt>Last contact</dt><dd>${esc(last)} ${c.lastContact!==today()?`<button class="more" style="padding:0 0 0 6px" data-act="logContactBtn" data-id="${id}">Log today</button>`:''}</dd>
+        ${c.source?`<dt>Source</dt><dd>${esc(sourcePath(c))}</dd>`:''}
+        ${leadDate(c)?`<dt>Lead created</dt><dd>${esc(new Date(leadDate(c)+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}))}</dd>`:''}
+        <dt>Last contact</dt><dd>${esc(last)}<span class="lcctl">${c.lastContact!==today()?`<button class="more" style="padding:0" data-act="logContactBtn" data-id="${id}">Log today</button>`:''}<label class="more lcpick">Pick date<input type="date" data-lcdate="${id}" max="${today()}" value="${esc(c.lastContact||'')}" aria-label="Last contact date"></label></span></dd>
       </dl>
-      ${c.notes?`<div class="note">${esc(c.notes)}</div>`:''}
+      ${clientAiBlock(c)}
+      ${c.notes?`<details class="rawnotes"><summary>Your notes</summary><p>${esc(c.notes)}</p></details>`:''}
       <div class="sub">Open tasks <button class="btn small ghost" data-act="newTask" data-client="${id}" data-type="Follow-up">Add</button></div>
       ${tasks.length?`<div class="list">${tasks.map(t=>taskRow(t,true)).join('')}</div>`:`<div class="empty" style="padding:14px 16px">No follow-up booked.</div>`}
       ${(()=>{ const cs = Object.values(state.calcs).filter(k=>k.clientId===id); return cs.length?`<div class="sub">Calculations</div><div class="list">${cs.map(k=>{ if(k.type==='payplan'){ const pc=planCompute(k.plan); return `<div class="row tap" data-act="calcOpen" data-id="${k.id}"><div class="grow"><div class="t">${esc(k.name)}</div><div class="s">Payment plan · ${aed(pc.price,true)}</div></div><div class="r">${Math.round(pc.consP)}/${Math.round(pc.compP)}${pc.postP?'/'+Math.round(pc.postP):''}</div></div>`; } const r=computeCalc(k.inputs||{}); return `<div class="row tap" data-act="calcOpen" data-id="${k.id}"><div class="grow"><div class="t">${esc(k.name)}</div><div class="s">Cash flow · ${aed(r.price,true)}</div></div><div class="r">Net ${pct(r.netY)}</div></div>`;}).join('')}</div>`:''; })()}
@@ -2995,7 +3385,7 @@ function saveMeta(){
   try{ localStorage.setItem(LS_KEY+'-profile', JSON.stringify(docProfile)); }catch(e){}
   if(dbRoot) queueWrite('meta', ()=>dbRoot.set({lastBackup, docProfile, tomb, lastSync}));
 }
-const CLIENT_COLS = [['ID','id'],['Name','name'],['Phone','phone'],['Email','email'],['Status','status'],['Source','source'],['Budget','budget'],['Looking for','interest'],['Last contact','lastContact'],['Notes','notes']];
+const CLIENT_COLS = [['ID','id'],['Name','name'],['Phone','phone'],['Email','email'],['Status','status'],['Source','source'],['Source detail','sourceSub'],['Source event','sourceSub2'],['Lead creation date','leadDate'],['Budget','budget'],['Looking for','interest'],['Last contact','lastContact'],['Notes','notes']];
 const TASK_COLS = [['ID','id'],['Type','type'],['Title','title'],['Client','_client'],['Client ID','clientId'],['Date','date'],['Time','time'],['Done','done'],['Done on','doneOn'],['Notes','notes']];
 const DEAL_COLS = [['ID','id'],['Property','property'],['Client','_client'],['Client ID','clientId'],['Type','type'],['Price (AED)','price'],['Agency commission %','pct'],['Your share %','share'],['Your commission (AED)','_comm'],['Stage','stage'],['Commission expected','expected'],['Commission paid on','paidDate'],['Notes','notes']];
 const CALC_COLS = [['ID','id'],['Name','name'],['Client','_client'],['Client ID','clientId'],['Purchase price (AED)','in.price'],['Other costs (AED)','in.other'],['Loan amount (AED)','in.loan'],['Loan term (months)','in.term'],['Interest rate %','in.rate'],['Annual rent (AED)','in.rent'],['Service charge (AED)','in.hoa'],['Maintenance (AED)','in.maint'],['Exchange rate','in.fx'],['Total acquisition cost (AED)','out.total'],['Monthly payment (AED)','out.pmt'],['Gross yield','out.gross'],['Net yield','out.netY'],['Monthly cash flow after mortgage (AED)','out.monthly'],['Cash-on-cash return','out.coc']];
@@ -3019,6 +3409,7 @@ async function exportXlsx(){
   XLSX.utils.book_append_sheet(wb, sheet(CALC_COLS, Object.values(state.calcs).filter(k=>k.type!=='payplan'),
     (r,k)=> k==='_client'?clientName(r.clientId) : k.startsWith('in.')?(r.inputs||{})[k.slice(3)]??'' : k.startsWith('out.')?(()=>{const o=computeCalc(r.inputs||{}); const v=o[k.slice(4)]; return ['gross','netY','coc'].includes(k.slice(4))?pct(v):Math.round(v);})() : r[k]??''), 'Calculations');
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['ID','Project','Developer','Location','Project data (do not edit)'], ...Object.values(state.projects).map(pr=>[pr.id, pr.name, pr.developer, pr.location, JSON.stringify(pr)])]), 'Projects');
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['ID','Client','Client ID','Date','Type','Notes','Summary','Next steps'], ...Object.values(state.notes||{}).sort((a,b)=>(a.date||'').localeCompare(b.date||'')).map(n=>[n.id, clientName(n.clientId), n.clientId, n.date, n.type, n.text, (n.summary||[]).join('\n'), (n.nextSteps||[]).map(x=>x.text).join('\n')])]), 'Call log');
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['ID','Map','Pins','Map data (do not edit)'], ...Object.values(state.maps||{}).map(m=>[m.id, m.name, (m.pins||[]).length, JSON.stringify(m)])]), 'Maps');
   const buf = XLSX.write(wb, {type:'array', bookType:'xlsx'});
   try{
@@ -3032,7 +3423,7 @@ async function exportXlsx(){
 
 function readBackupRows(XLSX, wb){
   const get = name => { const sn = wb.SheetNames.find(n=>n.toLowerCase()===name); return sn ? XLSX.utils.sheet_to_json(wb.Sheets[sn], {defval:'', raw:false}) : []; };
-  const map = (rows, cols) => rows.map(r=>{ const o={}; cols.forEach(([h,k])=>{ if(!k.startsWith('_')) o[k]=String(r[h]??'').trim(); }); return o; }).filter(o=>o.id);
+  const map = (rows, cols) => rows.map(r=>{ const o={}; cols.forEach(([h,k])=>{ if(!k.startsWith('_')) o[k]=String(r[h] ?? (h==='Lead creation date' ? r['Lead date'] : '') ?? '').trim(); }); return o; }).filter(o=>o.id);
   const clients = map(get('clients'), CLIENT_COLS).map(c=>({...c, status:statusFromLabel(c.status)}));
   const tasks = map(get('tasks'), TASK_COLS).map(t=>({...t, done:/^(yes|true|1)$/i.test(t.done), doneOn:t.doneOn||null}));
   const deals = map(get('deals'), DEAL_COLS).map(d=>({...d, stage:stageFromLabel(d.stage), price:Number(String(d.price).replace(/[^\d.]/g,''))||0, pct:Number(d.pct)||0, share:d.share===''?100:Number(d.share)}));
@@ -3040,7 +3431,8 @@ function readBackupRows(XLSX, wb){
   get('payment plans').forEach(r=>{ const id=String(r['ID']||'').trim(); if(!id) return; try{ const plan = JSON.parse(r['Plan data (do not edit)']); calcs.push({id, type:'payplan', name:String(r['Name']||''), clientId:String(r['Client ID']||''), plan}); }catch(e){} });
   const projects = []; get('projects').forEach(r=>{ try{ const pr = JSON.parse(r['Project data (do not edit)']); if(pr && pr.id) projects.push(pr); }catch(e){} });
   const maps = []; get('maps').forEach(r=>{ try{ const m = JSON.parse(r['Map data (do not edit)']); if(m && m.id) maps.push(m); }catch(e){} });
-  return {clients, tasks, deals, calcs, projects, maps};
+  const notes = get('call log').map(r=>({id:String(r['ID']||'').trim(), clientId:String(r['Client ID']||'').trim(), date:String(r['Date']||'').trim(), type:String(r['Type']||'Call').trim(), text:String(r['Notes']||''), summary:String(r['Summary']||'').split('\n').map(x=>x.trim()).filter(Boolean), nextSteps:String(r['Next steps']||'').split('\n').map(x=>x.trim()).filter(Boolean).map(t=>({text:t, dueInDays:2})), ai:String(r['Summary']||'').trim()?'done':'pending'})).filter(n=>n.id && n.clientId);
+  return {clients, tasks, deals, calcs, projects, maps, notes};
 }
 async function restoreData(data, label){
   const counts = KINDS.map(k=>(data[k]||[]).length);
@@ -3077,10 +3469,10 @@ async function writeRestorePoint(){
   try{
     if((await col.doc(date).get()).exists) return;
     if(!KINDS.some(k=>Object.keys(state[k]).length)) return;
-    const chunks = []; let cur = {clients:[],tasks:[],deals:[],calcs:[],projects:[],maps:[]}, size = 0;
+    const chunks = []; let cur = {clients:[],tasks:[],deals:[],calcs:[],projects:[],maps:[],notes:[]}, size = 0;
     for(const k of KINDS) for(const rec of Object.values(state[k])){
       const len = JSON.stringify(rec).length;
-      if(size+len > SNAP_CHUNK && size){ chunks.push(cur); cur={clients:[],tasks:[],deals:[],calcs:[],projects:[],maps:[]}; size=0; }
+      if(size+len > SNAP_CHUNK && size){ chunks.push(cur); cur={clients:[],tasks:[],deals:[],calcs:[],projects:[],maps:[],notes:[]}; size=0; }
       cur[k].push(rec); size += len;
     }
     chunks.push(cur);
@@ -3108,7 +3500,7 @@ async function restorePoint(date){
   try{
     const col = dbRoot.collection('snapshots'); const meta = (await col.doc(date).get()).data();
     if(!meta){ toast('That restore point is no longer available.'); return; }
-    const data = {clients:[],tasks:[],deals:[],calcs:[],projects:[],maps:[]};
+    const data = {clients:[],tasks:[],deals:[],calcs:[],projects:[],maps:[],notes:[]};
     for(let i=0;i<meta.parts;i++){ const part=(await col.doc(`${date}_part${i}`).get()).data()||{}; KINDS.forEach(k=>data[k].push(...(part[k]||[]))); }
     restoreData(data, `the restore point from ${niceDate(date)}`);
   }catch(e){ console.error(e); toast('Couldn\'t load that restore point.'); }
@@ -3129,6 +3521,13 @@ function parseCSV(text){
   return rows.filter(r=>r.some(c=>c.trim()));
 }
 const NAME_KEYS = ['name','client'];
+function parseLeadDate(v){
+  v = String(v||'').trim(); if(!v) return today();
+  let m = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/); if(m) return `${m[1]}-${pad(+m[2])}-${pad(+m[3])}`;
+  m = v.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})$/);
+  if(m){ let a = +m[1], b = +m[2], y = +m[3]; if(y<100) y += 2000; let d = a, mo = b; if(b>12 && a<=12){ d = b; mo = a; } if(mo>=1&&mo<=12&&d>=1&&d<=31) return `${y}-${pad(mo)}-${pad(d)}`; }
+  const t = Date.parse(v); return isNaN(t) ? today() : dstr(new Date(t));
+}
 function headerIndex(rows){
   // Excel sheets often have a title or blank rows above the real header
   for(let i=0;i<Math.min(rows.length,15);i++){
@@ -3169,7 +3568,7 @@ async function importFile(file){
   catch(e){ toast('That file couldn\'t be opened as a spreadsheet.'); return; }
   // use the first sheet that has a Name column
   for(const sn of wb.SheetNames){
-    const rows = XLSX.utils.sheet_to_json(wb.Sheets[sn], {header:1, raw:false, defval:''}).map(r=>r.map(c=>String(c??'')));
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[sn], {header:1, raw:false, defval:'', dateNF:'yyyy-mm-dd'}).map(r=>r.map(c=>String(c??'')));
     if(headerIndex(rows)>=0){ importRows(rows, sn, wb.SheetNames.length>1); return; }
   }
   toast('Couldn\'t find a Name column in any sheet.');
@@ -3183,7 +3582,7 @@ async function importRows(rows, sheetName, multi){
   const head = rows[0].map(h=>String(h).trim().toLowerCase());
   const find = (...keys) => head.findIndex(h=>keys.some(k=>h.includes(k)));
   const col = {name:find('name','client'), phone:find('phone','mobile','whatsapp','contact no','number'), email:find('email','e-mail'),
-    status:find('status','stage'), budget:find('budget'), source:find('source','lead from'), interest:find('interest','looking','project','requirement','area'), notes:find('note','comment','remark')};
+    status:find('status','stage'), budget:find('budget'), source:find('source','lead from','campaign'), leadDate:find('date assigned','assigned','lead creation','lead date','created','date'), interest:find('interest','looking','project','requirement','area'), notes:find('note','comment','remark')};
   if(col.name<0){ toast('Couldn\'t find a Name column.'); return; }
   const existing = new Set(Object.values(state.clients).map(c=>(c.name+'|'+(c.phone||'')).toLowerCase()));
   let n=0;
@@ -3193,7 +3592,7 @@ async function importRows(rows, sheetName, multi){
     if(existing.has((name+'|'+g('phone')).toLowerCase())) continue;
     let st = g('status').toLowerCase();
     const status = /hot/.test(st)?'Hot':/warm|interest/.test(st)?'Warm':/client|closed|bought|investor/.test(st)?'Client':/cold|dead|lost/.test(st)?'Cold':'New';
-    const c = {id:newId(), name, phone:g('phone'), email:g('email'), status, budget:g('budget'), source:g('source'), interest:g('interest'), notes:g('notes'), createdAt:Date.now(), updatedAt:Date.now()};
+    const c = {id:newId(), name, phone:g('phone'), email:g('email'), status, stage:'No Contact', budget:g('budget'), ...matchSource(g('source')), leadDate:parseLeadDate(g('leadDate')), interest:g('interest'), notes:g('notes'), createdAt:Date.now(), updatedAt:Date.now()};
     state.clients[c.id]=c; persist('clients', c.id, false); n++;
   }
   render(); closeSheet(); toast(`Imported ${n} client${n===1?'':'s'}${multi&&sheetName?` from “${sheetName}”`:''}.`);
@@ -3243,6 +3642,18 @@ document.addEventListener('click', e=>{
     case 'toggle': toggleTask(id); break;
     case 'showLater': ui.showLater=true; render(); break;
     case 'clientFilter': ui.clientFilter=el.dataset.v; render(); break;
+    case 'logCall': logCallSheet(id); break;
+    case 'logOpen': logDetailSheet(id); break;
+    case 'logAi': runLogAi(id, true); break;
+    case 'logDel': { const n = state.notes[id]; if(!n) break; if(!confirm('Delete this log?')) break; remove('notes', id); clientSheet(n.clientId); toast('Log deleted.'); break; }
+    case 'aiProfile': { toast('Updating the client summary…'); aiRefreshProfile(id).then(()=>toast('Summary updated.')).catch(e=>toast(aiError(e))); break; }
+    case 'aiPending': runPending(id); break;
+    case 'toggleMoney': ui.showMoney = !ui.showMoney; render(); break;
+    case 'ovStatus': ui.tab='clients'; ui.clientFilter=el.dataset.v; ui.clientStage=''; render(); $main.scrollTop=0; break;
+    case 'ovSeg': ui.tab='clients'; ui.clientFilter=el.dataset.s; ui.clientStage=el.dataset.v; render(); $main.scrollTop=0; break;
+    case 'ovStage': ui.tab='clients'; ui.clientFilter='all'; ui.clientStage=el.dataset.v; render(); $main.scrollTop=0; break;
+    case 'clientStage': ui.clientStage = el.dataset.v; render(); break;
+    case 'cfClear': ui.cf = {s1:'',s2:'',s3:'',y:'',m:''}; ui.clientStage=''; render(); break;
     case 'dealFilter': ui.dealFilter=el.dataset.v; render(); break;
     case 'year': ui.year = el.dataset.v==='all'?'all':Number(el.dataset.v); render(); break;
     case 'seg': { const f=el.closest('form'); f.type.value=el.dataset.v; f.querySelectorAll('[data-act=seg]').forEach(b=>{b.classList.toggle('on',b===el); b.setAttribute('aria-checked', b===el);}); break; }
@@ -3368,6 +3779,11 @@ document.addEventListener('input', e=>{
   if(e.target.hasAttribute('data-calc')) updateCalc();
 });
 document.addEventListener('change', e=>{
+  if(e.target.dataset && e.target.dataset.lcdate){ const c = state.clients[e.target.dataset.lcdate]; if(c && e.target.value){ save('clients', {...c, lastContact:e.target.value}); toast('Last contact set to '+niceDate(e.target.value)+'.'); } return; }
+  if(e.target.dataset && e.target.dataset.cf){ const k = e.target.dataset.cf, f = ui.cf; f[k] = e.target.value; if(k==='s1'){ f.s2=''; f.s3=''; } if(k==='s2') f.s3=''; if(k==='y') f.m=''; render(); return; }
+  if(e.target.dataset && e.target.dataset.src){ const f = e.target.form, lvl = e.target.dataset.src;
+    const cur = {source:f.source.value, sourceSub: lvl==='1' ? '' : (f.sourceSub?f.sourceSub.value:''), sourceSub2: lvl==='3' ? f.sourceSub2.value : ''};
+    document.getElementById('srcBox').innerHTML = sourceFields(cur); const nx = document.getElementById(lvl==='1'?'cso2':'cso3'); if(nx && lvl!=='3') nx.focus(); return; }
   if(e.target.id==='syncFile' && e.target.files[0]){ const f = e.target.files[0]; e.target.value=''; syncIn(f); return; }
   if(e.target.id==='mmFile' && e.target.files[0]){ const f = e.target.files[0]; e.target.value=''; uploadMap(f); return; }
   if(e.target.dataset && e.target.dataset.mkt){ ui.mkt.period = {...ui.mkt.period, [e.target.dataset.mkt]: Number(e.target.value)}; mktClamp(); render(); if(mcpReady) loadMarket(); return; }
@@ -3390,10 +3806,23 @@ document.addEventListener('submit', e=>{
   } else if(kind==='client'){
     const prev = state.clients[id]||{};
     const {followup, ...rest} = v;
-    save('clients', {...prev, ...rest, name:v.name.trim(), id});
+    save('clients', {...prev, ...rest, sourceSub:v.sourceSub||'', sourceSub2:v.sourceSub2||'', name:v.name.trim(), id});
+    if(sampleCap && (v.notes||'').trim() && (v.notes||'') !== (prev.notes||'')){ toast('Updating the client summary…'); aiRefreshProfile(id).catch(e=>toast(aiError(e))); }
     if(followup) save('tasks', {id:newId(), type:'Follow-up', title:`Follow up with ${v.name.trim().split(' ')[0]}`, clientId:id, date:addDays(today(),2), time:'', notes:'', done:false});
     toast(prev.id?'Saved.':'Client added.');
     closeSheet(); return;
+  } else if(kind==='calllog'){
+    const cid = f.dataset.client; if(!(v.text||'').trim()){ toast('Add a few words about the call first.'); return; }
+    const n = {id:newId(), clientId:cid, type:v.type||'Call', date:v.date||today(), text:v.text.trim(), summary:[], nextSteps:[], ai:'pending'};
+    save('notes', n); setLastContact(cid, n.date);
+    if(sampleCap) runLogAi(n.id, true); else { clientSheet(cid); toast('Logged. It\'ll be summarised in the desktop app.'); }
+    return;
+  } else if(kind==='nextsteps'){
+    const n = state.notes[f.dataset.id]; if(!n){ closeSheet(); return; }
+    let added = 0;
+    (n.nextSteps||[]).forEach((st,i)=>{ if(v['s'+i]){ save('tasks', {id:newId()+i, type:'Follow-up', title:st.text, clientId:n.clientId, date:v['d'+i]||addDays(today(), st.dueInDays), time:'', notes:'', done:false}); added++; } });
+    if(v.stage && n.stageHint){ const c = state.clients[n.clientId]; if(c && STAGE_LIST.indexOf(n.stageHint) > STAGE_LIST.indexOf(c.stage||'')) save('clients', {...c, stage:n.stageHint}); }
+    clientSheet(n.clientId); toast(added ? `Added ${added} follow-up${added===1?'':'s'}.` : 'Saved.'); return;
   } else if(kind==='mmpin'){
     const {m} = currentMap(); if(!m){ closeSheet(); return; }
     const isNew = f.dataset.new==='1', pid = f.dataset.id;
@@ -3496,8 +3925,8 @@ if(IS_PHONE){
 (async function connect(){
   if(!window.claude || typeof window.claude.use!=='function') return;
   try{
-    const [db, user, dl, as, mc] = await Promise.all([claude.use('db'), claude.use('user'), claude.use('downloads'), claude.use('assets'), claude.use('mcp')]);
-    downloads = dl; assetsCap = as; mcpCap = mc; render();
+    const [db, user, dl, as, mc, sm] = await Promise.all([claude.use('db'), claude.use('user'), claude.use('downloads'), claude.use('assets'), claude.use('mcp'), claude.use('sample')]);
+    downloads = dl; assetsCap = as; mcpCap = mc; sampleCap = sm; render();
     const uid = user ? await user.id() : null;
     if(!db || !uid){ render(); return; }
     dbRoot = db.doc(`data/users/${uid}/desk`);
