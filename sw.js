@@ -1,6 +1,6 @@
 // Broker Desk offline cache. Bump VERSION when you upload a new index.html.
-const VERSION = 'bd-19';
-const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-180.png', './icon-maskable.png'];
+const VERSION = 'bd-20';
+const SHELL = ['./', './index.html', './manifest-v2.webmanifest', './icon-192-v2.png', './icon-512-v2.png', './icon-180-v2.png', './icon-maskable-v2.png'];
 const LIBS = [
   'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'
