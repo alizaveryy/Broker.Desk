@@ -505,6 +505,13 @@ details.logrow[open]{border-color:var(--sea)}
 .ytab.yrs tr.sel th,.ytab.yrs tr.sel td{background:var(--sea-soft);color:var(--sea)}
 .ytab.yrs tr.tot th,.ytab.yrs tr.tot td{border-top:2px solid var(--line)}
 .ytab.yrs td{font-size:15px}
+.sheet{overflow-x:hidden;overscroll-behavior:contain}
+.sheet form,.sheet .field{min-width:0;max-width:100%}
+.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.field input,.field select,.field textarea{min-width:0;max-width:100%}
+input[type=date],input[type=month]{min-width:0;max-width:100%;-webkit-appearance:none;appearance:none;min-height:44px}
+.prt2{flex-wrap:wrap}
+.cpick{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:var(--radius-sm);padding:11px 12px;font-size:16px}
 .editing{font-size:13.5px;color:var(--ink-2);margin:-4px 4px 12px}
 .editing b{color:var(--ink)}
 @media (min-width:1000px){ .cols.calc{grid-template-columns:minmax(0,1fr) minmax(320px,.9fr)} .cols.calc .col-side{position:sticky;top:0} }
@@ -611,7 +618,7 @@ const SOURCE_TREE = [
   {n:'Roadshow', c:[
     {n:'NY / NJ', c:[{n:'NY / NJ Feb 2025'},{n:'NY / NJ Mar 2025'},{n:'NY / NJ May 2026'},{n:'NY / NJ Sept 2026'}]},
     {n:'LA / OC', c:[{n:'LA / OC Oct 2025'},{n:'LA / OC Feb 2026'}]},
-    {n:'Washington DC'},{n:'Telesales'}]},
+    {n:'Washington DC', c:[{n:'Washington DC Sept 2026'}]},{n:'Telesales'}]},
   {n:'Family'},
   {n:'Property Finder / Bayut'},
   {n:'Other'}
@@ -963,13 +970,14 @@ const SOLD_STAGES = ['spa','closed','received'];
 const dealYear = d => (SOLD_STAGES.includes(d.stage) ? dealSoldOn(d) : (d.bookingDate || dayOf(d.createdAt) || '')).slice(0,4);
 function monthsIn(y){ const now = new Date(); return Number(y)===now.getFullYear() ? now.getMonth()+1 : 12; }
 function yearsWithData(){ const ys = new Set([String(new Date().getFullYear())]); Object.values(state.deals).forEach(d=>{ const y = dealYear(d); if(y) ys.add(y); }); allReceipts().forEach(r=>{ if(r.date) ys.add(r.date.slice(0,4)); }); return [...ys].sort().reverse(); }
+const convDate = c => { const ds = Object.values(state.deals).filter(d=>d.clientId===c.id && d.stage!=='lost' && d.bookingDate).map(d=>d.bookingDate).sort(); return ds[0] || ''; };
 function dealCard(d){
   const idx = STAGE_IDX[d.stage] ?? -1;
   let next = d.stage!=='lost' && idx < STAGES.length-1 ? STAGES[idx+1] : null;
   if(next && next.id==='received' && (d.parts||[]).length) next = null;
   const cls = d.stage==='received'?'stage-received':d.stage==='closed'?'stage-closed':d.stage==='lost'?'stage-lost':'';
   return `<div class="deal">
-    <div class="top tap" data-act="deal" data-id="${d.id}"><div><div class="name">${esc(d.property||'Untitled deal')}</div><div class="who">${esc([clientName(d.clientId), d.type].filter(Boolean).join(' · '))}</div></div><span class="pill ${cls}">${esc(stageLabel(d.stage))}</span></div>
+    <div class="top tap" data-act="deal" data-id="${d.id}"><div><div class="name">${esc(d.property||'Untitled deal')}</div><div class="who">${esc([clientName(d.clientId), d.developer, d.type].filter(Boolean).join(' · '))}</div></div><span class="pill ${cls}">${esc(stageLabel(d.stage))}</span></div>
     <div class="nums tap" data-act="deal" data-id="${d.id}"><div>Price<b>${aed(d.price,true)}</b></div><div>Your commission<b class="comm">${aed(commission(d))}</b></div>${d.bookingDate?`<div>Booked<b style="font-size:15px">${esc(new Date(d.bookingDate+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}))}</b></div>`:''}</div>
     ${(d.parts||[]).length ? (()=>{ const r = commReceived(d), c = commission(d); return `<div class="partbar tap" data-act="deal" data-id="${d.id}"><i style="width:${c?r/c*100:0}%"></i></div><div class="who" style="margin:-4px 0 8px">Received ${aed(r)} of ${aed(c)} · ${d.parts.filter(p=>p.received).length} of ${d.parts.length} parts</div>`; })() : ''}
     ${d.stage!=='lost'?`<div class="stagebar" aria-hidden="true">${STAGES.map((s,i)=>`<i class="${i<=idx?'on':''}"></i>`).join('')}</div>`:''}
@@ -986,7 +994,8 @@ function viewDeals(){
   const pipeline = groups.open.reduce((s,d)=>s+commission(d),0);
   const yrRows = yrs.map(y=>{ const sold = every.filter(d=>SOLD_STAGES.includes(d.stage) && dealSoldOn(d).startsWith(y)); const v = sold.reduce((a,d)=>a+pn(d.price),0); return {y, n:sold.length, v, avg:v/monthsIn(y)}; });
   const life = yrRows.reduce((a,r)=>({n:a.n+r.n, v:a.v+r.v}), {n:0, v:0});
-  let h = `<h1>Deals</h1><p class="lede">${groups.open.length} in progress worth <b>${aed(pipeline,true)}</b> to you${ui.dealYear==='all'?'':' in '+ui.dealYear}.</p>
+  const owed = all.reduce((a,d)=>a+commPending(d),0);
+  let h = `<h1>Deals</h1><p class="lede">Commission outstanding${ui.dealYear==='all'?'':' ('+ui.dealYear+')'}: <b>${aed(owed)}</b></p>
     <div class="calc-card"><h4>Sales by year <small>deals count from SPA signed</small></h4><div class="tscroll"><table class="score ytab yrs"><thead><tr><th>Year</th><th><span class="lgl">Deals closed</span><span class="sml">Deals</span></th><th><span class="lgl">Sales volume (AED)</span><span class="sml">Volume</span></th><th><span class="lgl">Monthly avg (AED)</span><span class="sml">Avg/mo</span></th></tr></thead><tbody>
       ${yrRows.map(r=>`<tr class="${ui.dealYear===r.y?'sel':''}"><th>${r.y}</th><td>${r.n}</td><td>${r.v?bn(r.v):'–'}</td><td>${r.v?bn(r.avg):'–'}</td></tr>`).join('')}
       <tr class="tot"><th>Lifetime</th><td>${life.n}</td><td>${life.v?bn(life.v):'–'}</td><td></td></tr></tbody></table></div></div>
@@ -997,7 +1006,7 @@ function viewDeals(){
   if(ui.dealFilter==='open'){
     STAGES.slice(0,4).slice().reverse().forEach(s=>{
       const g = list.filter(d=>d.stage===s.id); if(!g.length) return;
-      h += `<h2>${esc(s.label)} <small>${g.length} · ${aed(g.reduce((x,d)=>x+commission(d),0),true)}</small></h2><div class="dgrid">${g.map(dealCard).join('')}</div>`;
+      h += `<h2>${esc(s.label)} <small>${g.length} · ${aed(g.reduce((x,d)=>x+commPending(d),0),true)} owed</small></h2><div class="dgrid">${g.map(dealCard).join('')}</div>`;
     });
   } else h += `<div class="dgrid">${list.map(dealCard).join('')}</div>`;
   return h;
@@ -1159,7 +1168,7 @@ function calcSaveSheet(asNew){
   openSheet(`<h3>${existing?'Save changes':'Save calculation'}</h3>
     <form id="f" data-kind="calc" data-new="${asNew?1:''}">
       <div class="field"><label for="kn">Name</label><input id="kn" name="name" required value="${esc(existing?existing.name:'')}" placeholder="e.g. Fior 1 – 2BR, 1204" autofocus></div>
-      <div class="field"><label for="kc">Client</label><select id="kc" name="clientId">${clientOptions(existing?existing.clientId:calcDraft.clientId)}</select></div>
+      <div class="field"><label>Client</label>${clientPick('clientId', existing?existing.clientId:calcDraft.clientId)}</div>
       <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn">Save</button></div>
     </form>`);
 }
@@ -1232,7 +1241,7 @@ function viewPlan(){
     <div class="field"><label for="pp-size">Size, sq ft <small style="font-weight:400">(optional)</small></label><input id="pp-size" data-pin="prop.size" data-type="num" inputmode="decimal" value="${esc(fmtNum(p.prop.size))}"></div></div>
     <div class="two"><div class="field"><label for="pp-price">Purchase price (AED)</label><input id="pp-price" data-pin="prop.price" data-type="num" inputmode="decimal" value="${esc(fmtNum(p.prop.price))}"></div>
     <div class="field"><label for="pp-comp">Completion</label><input id="pp-comp" type="month" data-pin="prop.completion" data-type="month" value="${esc(p.prop.completion)}"></div></div>
-    <div class="field"><label for="pp-client">Client</label><select id="pp-client" data-pin="clientId" data-type="text">${clientOptions(p.clientId)}</select></div>
+    <div class="field"><label>Client</label>${clientPick('ppclient', p.clientId, 'data-planclient="1"')}</div>
   </div>
 
   <div class="calc-card"><h4>Payments <small id="pp-check"></small></h4>
@@ -1305,7 +1314,7 @@ function planSaveSheet(asNew){
   openSheet(`<h3>${existing?'Save changes':'Save plan'}</h3>
     <form id="f" data-kind="plansave" data-new="${asNew?1:''}">
       <div class="field"><label for="pk1">Name</label><input id="pk1" name="name" required value="${esc(existing?existing.name:(planTitle(planDraft)||''))}" autofocus></div>
-      <div class="field"><label for="pk2">Client</label><select id="pk2" name="clientId">${clientOptions(existing?existing.clientId:planDraft.clientId)}</select></div>
+      <div class="field"><label>Client</label>${clientPick('clientId', existing?existing.clientId:planDraft.clientId)}</div>
       <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn">Save</button></div>
     </form>`);
 }
@@ -2997,7 +3006,7 @@ function overviewStats(){
   const meetingDates = [...N.filter(n=>n.type==='Meeting').map(n=>n.date), ...T.filter(t=>t.done && (t.type==='Meeting'||t.type==='Viewing')).map(t=>t.doneOn||t.date)];
   const touched = new Map(); C.forEach(c=>{ const d = tsDay(c.updatedAt); if(d) touched.set(c.id, d); });
   N.forEach(n=>{ const d = n.date; if(d && (!touched.get(n.clientId) || d > touched.get(n.clientId))) touched.set(n.clientId, d); });
-  const conv = C.filter(c=>c.convertedAt);
+  const conv = C.map(c=>({...c, convertedAt:convDate(c)})).filter(c=>c.convertedAt);
   const pendingD = D.filter(d=>!['received','lost'].includes(d.stage));
   const recYear = allReceipts().filter(r=>(r.date||'').startsWith(P.year)).reduce((s,r)=>s+r.amount,0);
   const sold = D.filter(d=>['spa','closed','received'].includes(d.stage));
@@ -3034,15 +3043,15 @@ function viewOverview(){
     ['Leads updated', r => Object.values(touches).filter(ds=>ds.some(d=>within(d, r))).length],
     ['Calls & messages', r => N.filter(n=>n.type!=='Note' && within(n.date, r)).length],
     ['Meetings', r => meetDates.filter(d=>within(d, r)).length],
-    ['Converted', r => C.filter(c=>within(c.convertedAt, r)).length]
+    ['Converted', r => C.filter(c=>within(convDate(c), r)).length]
   ];
   const arrow = (a, b) => a===b ? '' : `<i class="${a>b?'up':'dn'}">${a>b?'▲':'▼'}</i>`;
   // six-month trend
   const months = []; for(let i=5;i>=0;i--){ const d = new Date(); d.setDate(1); d.setMonth(d.getMonth()-i); months.push(`${d.getFullYear()}-${pad(d.getMonth()+1)}`); }
-  const trend = months.map(m=>({m, leads:C.filter(c=>leadDate(c).startsWith(m)).length, conv:C.filter(c=>(c.convertedAt||'').startsWith(m)).length}));
+  const trend = months.map(m=>({m, leads:C.filter(c=>leadDate(c).startsWith(m)).length, conv:C.filter(c=>convDate(c).startsWith(m)).length}));
   const tMax = Math.max(1, ...trend.map(x=>x.leads));
   // status x stage
-  const STC = {'No Contact':'#C9D6D3','5+ Attempts':'#8FA9A5','Initial Contact Made':'#5E8F89','1st Call Complete':'#1F6F66','Meeting Complete':'#A87A22','Converted':'#12302F','':'var(--surface-2)'};
+  const STC = {'No Contact':'#8E9AAF','5+ Attempts':'#5B8DB8','Initial Contact Made':'#8C6BB1','1st Call Complete':'#1F9E8F','Meeting Complete':'#D39A2C','Converted':'#2E9E5B','':'#D97757'};
   const sMax = Math.max(1, ...CLIENT_STATUS.map(s=>C.filter(c=>c.status===s).length));
   const money = v => ui.showMoney ? aed(v, Math.abs(v) >= 1e6) : '<span class="dots">••••••</span>';
   const todayAll = sortTasks(T.filter(t=>t.date===P.t)), overdueN = T.filter(t=>!t.done && t.date && t.date<P.t).length;
@@ -3058,7 +3067,7 @@ function viewOverview(){
     <div class="calc-card"><div class="tscroll"><table class="score">
       <thead><tr><th></th>${R.map(r=>`<th><span class="lgl">${esc(r[0])}</span><span class="sml">${esc(r[3])}</span></th>`).join('')}</tr></thead>
       <tbody>${rows.map(([label, f])=>{ const v = R.map(r=>f(r)); return `<tr><th>${label}</th>${v.map((x,i)=>`<td>${x}${i===1?arrow(v[1], v[2]):''}</td>`).join('')}</tr>`; }).join('')}</tbody>
-    </table></div><p class="hint" style="margin:6px 0 0">Weeks start on Monday. ▲▼ compares this month with ${P.prevName}.</p></div>
+    </table></div><p class="hint" style="margin:6px 0 0">Weeks start on Monday. ▲▼ compares this month with ${P.prevName}. Conversions are counted on the deal's booking date${(()=>{ const n = C.filter(c=>c.status==='Client' && !convDate(c)).length; return n ? `; ${n} converted client${n===1?' has':'s have'} no deal with a booking date yet` : ''; })()}.</p></div>
 
     <div class="calc-card"><h4>New leads per month <small><span class="lg1"></span>leads <span class="lg2"></span>converted</small></h4>
       <div class="trend">${trend.map(x=>`<div><b>${x.leads}</b><i style="height:${x.leads/tMax*100}%">${x.conv?`<em style="height:${Math.min(100,x.conv/Math.max(1,x.leads)*100)}%"></em>`:''}</i><span>${MONTH_SHORT[+x.m.slice(5)-1]}</span></div>`).join('')}</div>
@@ -3066,7 +3075,7 @@ function viewOverview(){
 
     <div class="calc-card"><h4>Leads by status and stage <small>${C.length} total</small></h4>
       ${CLIENT_STATUS.map(s=>{ const list = C.filter(c=>c.status===s), n = list.length; return `<div class="sbar"><span class="tap" data-act="ovStatus" data-v="${s}">${STATUS_LABEL[s]}</span><div class="segs2" style="width:${n/sMax*100}%">${[...STAGE_LIST,''].map(st=>{ const k = list.filter(c=>(c.stage||'')===st).length; return k?`<button data-act="ovSeg" data-s="${s}" data-v="${esc(st)}" style="flex:${k};background:${STC[st]}" title="${esc((st||'No stage')+': '+k)}" aria-label="${esc(STATUS_LABEL[s]+', '+(st||'no stage')+': '+k)}"></button>`:''; }).join('')}</div><b>${n}</b></div>`; }).join('')}
-      <div class="slegend">${STAGE_LIST.map(st=>`<span><i style="background:${STC[st]}"></i>${st}</span>`).join('')}</div>
+      <div class="slegend">${STAGE_LIST.map(st=>`<span><i style="background:${STC[st]}"></i>${st}</span>`).join('')}<span><i style="background:${STC['']}"></i>No stage set</span></div>
     </div>
   </div><aside class="col-side">
     ${(()=>{
@@ -3803,6 +3812,11 @@ function openSheet(html, refresh){
 function closeSheet(){ if(parentClient && state.clients[parentClient]){ const id = parentClient; parentClient = null; clientSheet(id); return; } parentClient = null; activeClient = null; $sheet.classList.remove('on','wide'); $scrim.classList.remove('on'); ui.sheetRefresh=null; }
 
 const opt = (vals, sel, labels) => vals.map(v=>`<option value="${esc(v)}" ${v===sel?'selected':''}>${esc(labels?labels[v]??v:v)}</option>`).join('');
+function clientPick(name, selId, attrs=''){
+  const c = selId && state.clients[selId];
+  return `<input class="cpick" list="dl-clients" value="${esc(c?c.name:'')}" placeholder="Start typing a client's name" autocomplete="off" data-cpick="${name}" ${attrs}><input type="hidden" name="${name}" value="${esc(selId||'')}"><datalist id="dl-clients">${Object.values(state.clients).sort((a,b)=>(a.name||'').localeCompare(b.name||'')).map(x=>`<option value="${esc(x.name)}">`).join('')}</datalist>`;
+}
+function resolveClientPick(inp){ const nm = inp.value.trim().toLowerCase(); const c = Object.values(state.clients).find(x=>(x.name||'').toLowerCase()===nm); const hid = inp.nextElementSibling; if(hid && hid.type==='hidden') hid.value = c ? c.id : ''; return c ? c.id : ''; }
 const clientOptions = sel => `<option value="">No client</option>`+Object.values(state.clients).sort((a,b)=>a.name.localeCompare(b.name)).map(c=>`<option value="${c.id}" ${c.id===sel?'selected':''}>${esc(c.name)}</option>`).join('');
 
 function timeOptions(cur){
@@ -3853,6 +3867,7 @@ function dealForm(d){
   <form id="f" data-kind="deal" data-id="${d.id||''}">
     <div class="two"><div class="field"><label for="dp">Project</label><input id="dp" name="project" required value="${esc(d.project||d.property||'')}" placeholder="e.g. Damac Lagoons – Valencia" list="dealProjects" autofocus><datalist id="dealProjects">${Object.values(state.projects).map(p=>`<option value="${esc(p.name)}">`).join('')}</datalist></div>
     <div class="field"><label for="dun">Unit number</label><input id="dun" name="unit" value="${esc(d.unit||'')}" placeholder="e.g. V-214"></div></div>
+    <div class="field"><label for="ddv">Developer</label><input id="ddv" name="developer" value="${esc(d.developer||(d.projectId&&state.projects[d.projectId]?state.projects[d.projectId].developer:'')||'')}" placeholder="e.g. Damac" list="dealDevs"><datalist id="dealDevs">${[...new Set([...Object.values(state.projects).map(p=>p.developer), ...Object.values(state.deals).map(x=>x.developer)].filter(Boolean))].sort().map(x=>`<option value="${esc(x)}">`).join('')}</datalist></div>
     <div class="two"><div class="field"><label for="dc">Client</label><select id="dc" name="clientId">${clientOptions(d.clientId)}</select></div>
     <div class="field"><label for="dt">Type</label><select id="dt" name="type">${opt(['Off-plan','Secondary','Rental'],d.type)}</select></div></div>
     <div class="field"><label for="dpr">Price (AED)</label><input id="dpr" name="price" inputmode="numeric" value="${esc(d.price?fmtNum(d.price):'')}" data-calc data-money placeholder="e.g. 2,450,000"></div>
@@ -4453,6 +4468,7 @@ document.addEventListener('click', async e=>{
   }
 });
 document.addEventListener('input', e=>{
+  if(e.target.dataset && e.target.dataset.cpick){ const id = resolveClientPick(e.target); if(e.target.dataset.planclient){ planSetPath('clientId', id, 'text'); } return; }
   if(e.target.dataset && e.target.dataset.part!==undefined && e.target.dataset.pk==='pct'){ const p = dealParts[+e.target.dataset.part]; if(p){ p.pct = parseNum(e.target.value); const f = document.getElementById('f'); const c = f ? commission({price:parseNum(f.price.value), pct:f.pct.value, share:f.share.value}) : 0; const amt = e.target.closest('.prt').querySelector('.prtamt'); if(amt) amt.textContent = c ? aed(c*pn(p.pct)/100) : ''; } return; }
   if(e.target.dataset && e.target.dataset.money!==undefined){ const raw = e.target.value; if(/^[\d,]*$/.test(raw)){ const dg = raw.replace(/,/g,''); const f = dg ? Number(dg).toLocaleString('en-US') : ''; if(f!==raw){ const fromEnd = raw.length - (e.target.selectionEnd||raw.length); e.target.value = f; const pos = Math.max(0, f.length - fromEnd); try{ e.target.setSelectionRange(pos,pos); }catch(_){} } } }
   if(e.target.dataset.cin!==undefined){ calcDraft.inputs[e.target.dataset.cin] = parseNum(e.target.value); saveDraft(); updateCalcOut(); if(ui.calcType==='payplan') updatePlanOut(); return; }
@@ -4467,6 +4483,7 @@ document.addEventListener('input', e=>{
   if(e.target.hasAttribute('data-calc')) updateCalc();
 });
 document.addEventListener('change', e=>{
+  if(e.target.dataset && e.target.dataset.cpick){ const id = resolveClientPick(e.target); if(e.target.dataset.planclient){ planSetPath('clientId', id, 'text'); } if(!id && e.target.value.trim()) toast('No client with that exact name. Pick one from the suggestions.'); return; }
   if(e.target.id==='partsOn'){ const b = document.getElementById('partsBox'); if(b){ b.hidden = !e.target.checked; if(e.target.checked && !dealParts.length){ const bk = (document.getElementById('dbk')||{}).value || today(); dealParts = [{id:newId(), pct:50, date:bk, received:false},{id:newId(), pct:50, date:addDays(bk,60), received:false}]; } refreshParts(); } return; }
   if(e.target.dataset && e.target.dataset.part!==undefined){ const p = dealParts[+e.target.dataset.part]; if(p){ const k = e.target.dataset.pk; p[k] = k==='received' ? e.target.checked : k==='pct' ? parseNum(e.target.value) : e.target.value; if(k==='received' && e.target.checked && !p.date) p.date = today(); refreshParts(); } return; }
   if(e.target.dataset && e.target.dataset.compadd && e.target.value){ const pr = state.projects[ui.projectId]; if(pr){ pr.comps = [...new Set([...(pr.comps||[]), e.target.value])]; saveProjectNow(pr); render(); } return; }
@@ -4588,7 +4605,7 @@ document.addEventListener('submit', async e=>{
   } else if(kind==='deal'){
     const prev = state.deals[id]||{};
     const pj = (v.project||'').trim(), un = (v.unit||'').trim(), prj = Object.values(state.projects).find(p=>(p.name||'').toLowerCase()===pj.toLowerCase());
-    const upd = {...prev, ...v, id, project:pj, unit:un, projectId:prj?prj.id:(prev.projectId||''), property:[pj, un?'Unit '+un:''].filter(Boolean).join(' · '), price:parseNum(v.price)||0, pct:Number(v.pct)||0, share:v.share===''?100:Number(v.share)};
+    const upd = {...prev, ...v, id, developer:(v.developer||'').trim() || (prj&&prj.developer) || '', project:pj, unit:un, projectId:prj?prj.id:(prev.projectId||''), property:[pj, un?'Unit '+un:''].filter(Boolean).join(' · '), price:parseNum(v.price)||0, pct:Number(v.pct)||0, share:v.share===''?100:Number(v.share)};
     const usingParts = document.getElementById('partsOn') && document.getElementById('partsOn').checked;
     upd.parts = usingParts ? dealParts.filter(p=>pn(p.pct)>0) : [];
     delete upd.partsOn;
